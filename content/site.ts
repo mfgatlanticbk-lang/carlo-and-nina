@@ -141,7 +141,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink:
-      "https://weduploader.com/upload/x2kqPwdYOMbQ5Dto?utm_source=site&utm_medium=qrcode&utm_campaign=dashboard&utm_content=x2kqPwdYOMbQ5Dto",
+      "https://drive.google.com/drive/folders/1fH_NKSGFyW1DupwtElpS-cZIldXJ3280?usp=sharing",
     albumQR: "/QR/AlbumQR.png",
     hashtag: ["#MiaAndJovWedding"],
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",

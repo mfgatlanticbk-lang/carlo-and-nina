@@ -11,7 +11,7 @@ const cinzel = Cinzel({
 })
 
 const DRIVE_URL =
-  "https://drive.google.com/drive/folders/1rWdBfXKWvD03kClL949SL5tolJwfhajh?usp=sharing"
+  "https://drive.google.com/drive/folders/1fH_NKSGFyW1DupwtElpS-cZIldXJ3280?usp=sharing"
 
 const text = {
   body: "#2a2520",
