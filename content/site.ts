@@ -13,16 +13,16 @@ export const siteConfig = {
     backgroundMusic:"/background_music/Panalangin (WITH TAB) Moonstar88  Fingerstyle Guitar Cover  Lyrics.mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScwEUSUyxUUWQDHIW738kciHPBA_lRMEas0X4rN44dFuv6PmQ/formResponse",   //done
-    message: "https://script.google.com/macros/s/AKfycbzax4GyDyuGxF6Fil8cqOf_NewF3nDa9DB3ohjaLZtl_72Y-JoTMPSVD0xtyFAGwEde8w/exec",  //done
-    guestList: "https://script.google.com/macros/s/AKfycbwHCI36g4hLkXU2j5uBM1j4bZL0xbj-G05TDnpW8wauqIbWLBM0Ux68p9z8dO1lO-KUgA/exec",  //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbzY8I6C6q-eeSudCzn4nY5p05uI3f6WGhLX3ac86kUymFdan9llMZP6AJ9XrEx9Inl0Rw/exec",   //done
-    entourage: "https://script.google.com/macros/s/AKfycbyS5qPMqQK1P84VkKAkau4uZYq5Zg8jn3bs8uEtXoJiNb8t9-FjjS8p9qjSI_M2iBLISQ/exec",  //done
-    sponsors: "https://script.google.com/macros/s/AKfycbz2eZNkWej2bIxuNrABblq9s229LC7mdoGFHloMFFekvm6CwgilOb3_Bj56afR2Yi9VFg/exec",  //done 
-    proposalResponses: "https://script.google.com/macros/s/AKfycbzgs8_Ima4AnkkEGskBOBf3nk290mmzKTeVSYRIikfEalpmdcrElYR1mUX2Wt-JSZEQYA/exec", // uses entourage script with action: proposal
-    weddingDetails: "https://script.google.com/macros/s/AKfycbzv4ZrGK9yO6fLZQMhxaVnZ2N6on2tRbuPqxqit5wa-ywsXnuySZbhAkHRcPeHQceqOIw/exec",   //done
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSe-BGG96Vmw0EW7pffjhWUnXPLCE2cPT7QZLy4p9x9NK890Bw/formResponse",   //done
+    message: "https://script.google.com/macros/s/AKfycby8lqt6d3bE1mpXq7ggymZ4LsHTdu5GZ6zu3TzbfdfVn_XOJ8L6I_5JeCV3aHEZp3z6/exec",  //done
+    guestList: "https://script.google.com/macros/s/AKfycbyBjQh6nIbOwqBkHe0_v9GvGOBInzs8SyE2inZHyUUO1DZMC_CgkRABVaaEHuWQFrjj/exec",  //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbxm-PwFLbaBLvWPX8fRYL6-enzyqOO-2IW8TUb2DZx64l_vrWTwi1wlD0xUudYIFSc/exec",   //done
+    entourage: "https://script.google.com/macros/s/AKfycbw9UcjNEFBB8IQJBmNhuw4q9q4GojPdSNrlW4Fx1JyCVgjwg3WZrFgoQxCtmnSzGDvH/exec",  //done
+    sponsors: "https://script.google.com/macros/s/AKfycbw8SyeEbehl9PMnTZ3LRrvZN4DzxYsxUvx9h0pvE0Xsv3G5WSi8ZeLr0_ng9NJrF9Z3/exec",  //done 
+    proposalResponses: "https://script.google.com/macros/s/AKfycbw4sSBs5sR99p7hHNPsUQru6MksPmrppUXUDMhK3zlQ1jXU7UZ3BmGK1KrsgT9qcZCe/exec", // uses entourage script with action: proposal
+    weddingDetails: "https://script.google.com/macros/s/AKfycbwZQqnKSrcLu_vc6ATF_Tcd2xvw_vYSsf4NqRId_Mjk8h6EIDtKRHdQaBmTF1vMmO57/exec",   //done
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1MXqoVM4S4hxyaAu8SR4SrPD7xIbWH_1nbufJiMah26s/edit?usp=sharing", 
+    googleShare: "https://docs.google.com/spreadsheets/d/1LzwyRloGBdhylHiOTwjakkbWqLp8jFmmVLfdTJA8OJs/edit?usp=sharing", 
   },
   wedding: {
     date: "August 26, 2026",
