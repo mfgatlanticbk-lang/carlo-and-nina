@@ -37,9 +37,6 @@ const nextConfig = {
   outputFileTracingExcludes: {
     '/gallery': [
       './public/gallery/**/*',
-      './public/desktop-background/**/*',
-      './public/mobile-background/**/*',
-      './public/**/*.{jpg,jpeg,png,webp,gif,mp3,mp4,mov}',
     ],
     '/*': [
       './public/gallery/**/*',

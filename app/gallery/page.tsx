@@ -25,7 +25,7 @@ const aboveTheBeyond = localFont({
 const CORNER_DECO_CLASS =
   "block h-auto w-auto max-w-[120px] sm:max-w-[180px] md:max-w-[260px] lg:max-w-[320px] xl:max-w-[380px]"
 
-export const revalidate = 3600
+export const dynamic = "force-static"
 
 function GalleryCoupleLabel({ groom, bride }: { groom: string; bride: string }) {
   const lineStyle = {
@@ -110,12 +110,14 @@ export default async function GalleryPage() {
   const allImages = await fetchGalleryImages()
   const images = allImages.map((src) => ({
     src,
-    category: src.startsWith("/desktop-background/")
+    category: src.includes("/desktop-background/")
       ? ("desktop" as const)
       : ("mobile" as const),
     width: 1200,
     height: 900,
-    orientation: "landscape" as const,
+    orientation: src.includes("/mobile-background/")
+      ? ("portrait" as const)
+      : ("landscape" as const),
   }))
 
   return (

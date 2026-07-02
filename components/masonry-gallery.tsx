@@ -71,11 +71,11 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
                   src={img.src}
                   alt=""
                   fill
+                  unoptimized
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className={`rounded-xl transition-transform duration-300 group-hover:scale-[1.02] object-cover object-top ${
                     loaded[img.src] ? "opacity-100" : "opacity-0"
                   }`}
-                  quality={90}
                   loading="lazy"
                   onLoad={() => setLoaded((l) => ({ ...l, [img.src]: true }))}
                   onError={() => setLoaded((l) => ({ ...l, [img.src]: true }))}
@@ -107,8 +107,8 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
                 alt=""
                 width={filtered[lightboxIdx].width}
                 height={filtered[lightboxIdx].height}
+                unoptimized
                 className="max-h-[80vh] w-auto rounded-xl shadow-2xl border border-[#606C60]/30 object-contain"
-                quality={95}
                 priority
               />
             </div>
