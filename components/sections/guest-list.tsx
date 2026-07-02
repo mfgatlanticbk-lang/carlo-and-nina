@@ -688,7 +688,7 @@ export function GuestList() {
                   className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.15em]`}
                   style={{ fontSize: "var(--title-size)", color: palette.heading }}
                 >
-                  You&apos;re Invited
+                  You are Invited
                 </span>
                 <span
                   aria-hidden
