@@ -227,6 +227,7 @@ const ROLE_CATEGORY_ORDER = [
   "Candle Sponsors",
   "Veil Sponsors",
   "Cord Sponsors",
+  "Ribbon Sponsors",
   "Little Groom",
   "Little Bride",
   "Ring Bearer",
@@ -1068,9 +1069,9 @@ export function Entourage() {
                 }
 
                 // Secondary Sponsors block: render all three groups under one heading
-                if (category === "Candle Sponsors" || category === "Veil Sponsors" || category === "Cord Sponsors") {
+                if (category === "Candle Sponsors" || category === "Veil Sponsors" || category === "Cord Sponsors" || category === "Ribbon Sponsors") {
                   // Only render the full block once — when processing the first one that exists in order
-                  const secondarySponsorGroups = ["Candle Sponsors", "Veil Sponsors", "Cord Sponsors"] as const
+                  const secondarySponsorGroups = ["Candle Sponsors", "Veil Sponsors", "Cord Sponsors", "Ribbon Sponsors"] as const
                   const firstPresentGroup = secondarySponsorGroups.find((g) => (grouped[g]?.length ?? 0) > 0)
                   if (category !== firstPresentGroup) return null
 
