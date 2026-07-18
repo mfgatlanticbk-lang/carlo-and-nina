@@ -108,12 +108,15 @@ function GalleryTitle() {
 }
 
 const galleryItems = [
-  { image: "/mobile-background/couples-new (1).webp", text: " " },
-  { image: "/mobile-background/couples-new (2).webp", text: " " },
-  { image: "/mobile-background/couples-new (4).webp", text: " " },
-  { image: "/mobile-background/couples-new (5).webp", text: " " },
-  { image: "/mobile-background/couples-new (6).webp", text: " " },
-  { image: "/mobile-background/couples-new (7).webp", text: " " },
+  { image: "/mobile-background/couples (1).webp", text: " " },
+  { image: "/mobile-background/couples (2).webp", text: " " },
+  { image: "/mobile-background/couples (4).webp", text: " " },
+  { image: "/mobile-background/couples (5).webp", text: " " },
+  { image: "/mobile-background/couples (6).webp", text: " " },
+  { image: "/mobile-background/couples (8).webp", text: " " },
+  { image: "/mobile-background/couples (9).webp", text: " " },
+  { image: "/mobile-background/couples (10).webp", text: " " },
+  { image: "/mobile-background/couples (11).webp", text: " " },
 
 ]
 

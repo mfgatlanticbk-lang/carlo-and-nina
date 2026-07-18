@@ -9,25 +9,25 @@ export const siteConfig = {
     brideNickname: "May", //Ltryl
     groom: "Toto Irinco", //Ltryl B. Benitez
     groomNickname: "Toto",
-    monogram:"/monogram/new-monogram.png" ,//Ltryl
+    monogram:"/monogram/monogram.png" ,//Ltryl
     backgroundMusic:"/background_music/Keenan Te - Rest of My Life (Wedding Version).mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdEleuePbXlv-zSfN_-SmkHGTSMTxTNp6CbhH_BuDpeNvRz8g/formResponse",   //done
-    message: "https://script.google.com/macros/s/AKfycbzK1g2JQZanF2G4WsEJKCI5zSe_HZlOWoOa2G4zyWeO08TBBJZqEZw1G2-3TJf3g2M_/exec",  //done
-    guestList: "https://script.google.com/macros/s/AKfycbx6R7C6_RTyavwF9sSvwfjrXQOdOrBx55o9OkJIKlzOFFjWuXwG9_aEZod2CfHQZoA3/exec",  //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbzhYzTcq2eGlyl5mF8sTbvq9fjz89RxMgb45_XXSZBl9fYlpBvWuTCSTngLuKTzxFlG/exec",   //done
-    entourage: "https://script.google.com/macros/s/AKfycbwywxxvPp_KQDc0sJy1-oKfpNMZVRX1pU7w99bdEZjflVDTWTjKCHalsCcUiZOj-reM/exec",  //done
-    sponsors: "https://script.google.com/macros/s/AKfycbzIyTIj1zKRIFpzmZDT9MH2f0n3yz_YZQUmlHBofiNITkixWMsgpqlqpHsP3DoAX4a4/exec",  //done 
-    proposalResponses: "https://script.google.com/macros/s/AKfycbwHoYJhiPKcrXelSOklNMQ64R6UWrDCoN3tg4U161wMxxQMR6MCY4U1xnoSHtj4y06e/exec", // uses entourage script with action: proposal
-    weddingDetails: "https://script.google.com/macros/s/AKfycbxndi060nuIdKIUuLz6Glx77HN6CVTNIoFSj5yyiiIej-hDbUIne2r2wKTEiaB6jza7/exec",   //done
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSfKXj_u3AgTP3DOCoYFjcG2dr9RVfAKy1rj8_nBikgihWHLLQ/formResponse",   //done
+    message: "https://script.google.com/macros/s/AKfycbw2s0D4xLBLE3I47XNJGluv_42XDIE-73vpTQlO9TC6C8Sa1RAC6VyrvrvM4h7mW8wp4w/exec",  //done
+    guestList: "https://script.google.com/macros/s/AKfycbyd7HEt8Y8mKb1wat2FEJO4iRvKGYum7Y-tw6IwV_ZjB8JV9NQAX73LCFhOnoDlLLO94w/exec",  //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbx00EXh0FjJ3tLdVIMoexvqD_sA1Ya0dVzFQ0ddCY9jXsoW_8Xm1ix4ZEvSTlJmx0reYQ/exec",   //done
+    entourage: "https://script.google.com/macros/s/AKfycbwhkaucMi7NvUzTZ6e9AReD95b-rs3GO09kjqN6FmRhbGeys26GtM--5pMl53yL0MMFoA/exec",  //done
+    sponsors: "https://script.google.com/macros/s/AKfycbwIUDKMoMIHVwbmr6KbgmBtlGRpMGj1Z9maeHSEwsFaXNi0dAH8WYhqbtiAfg_p5D4lgw/exec",  //done 
+    proposalResponses: "https://script.google.com/macros/s/AKfycbxdQ8F-1IF5ElMcYYEJ78TWFLvf2qlmGcuCLZgmEG7iz1o66j8atEMQOgbucRQpdEloNg/exec", // uses entourage script with action: proposal
+    weddingDetails: "https://script.google.com/macros/s/AKfycbwlxVhR5Hq-vPm6yEanBSSd45AAhP2opA1yjTZwdyx0D7wPTjaKwJuri-_uc_jHT5V7hA/exec",   //done
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1C2_JxPs1kLGkBCx9Xiyy1SWMgJT7s-fn3BRCD66Od50/edit?usp=sharing", 
+    googleShare: "https://docs.google.com/spreadsheets/d/1PxlVp4NBRGyAv68p_YZ0dd-s23tjfzW5Vhv403EZvDU/edit?usp=sharing", 
   },
   wedding: {
     date: "August 31,2026",
     time: "4:00 PM",
-    venue: "Don Jose Heights Atrium and Clubhouse",
+    venue: "Don Jose Heights Atrium Hall",
     tagline: "are getting married!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
     motif: "#BBCED5, #B9C3A8, #F3D8C5, #D1C4D4, #ECD8BA, #F4E8D8, #E1DCCF",
@@ -41,8 +41,8 @@ export const siteConfig = {
   details: {
     rsvp: {
       deadline: "August 20, 2026",
-      // coordinator: "Ltryl B. Benitez",
-      phone: "09455801039",
+      coordinator: "Micah Estanislao",
+      phone: "0935 861 6096	",
     },
   },
   contact: {
@@ -65,7 +65,7 @@ export const siteConfig = {
     // }
   },
   ceremony: {
-    location: "Don Jose Heights Atrium and Clubhouse",
+    location: "Don Jose Heights Atrium Hall",
     venue: "Doña Carmen Ave. Don Jose Heights Subd. Brgy. Commonwealth, Quezon City, Philippines",
     map: "https://maps.app.goo.gl/6Uo3aPZHLPf4DmNAA",
     date: "August 31, 2026",
@@ -142,7 +142,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink:
-      "https://drive.google.com/drive/folders/1OcbF6e-oefHoNO4jCQ0MldQc9iUkB2sA?usp=sharing",
+      "https://drive.google.com/drive/folders/1aVvQuyGBtEX9rLoh7FxM2sJt9i8v-QCL?usp=sharing",
     albumQR: "/QR/AlbumQR.png",
     hashtag: ["#TOTOallyMAYdForEachOther",],
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",

@@ -9,17 +9,19 @@ import { parseWeddingDate } from "@/lib/wedding-date"
 import Image from "next/image"
 
 const desktopBackgroundSrcs: readonly string[] = [
-  '/desktop-background/couples-new (1).webp',
-  '/desktop-background/couples-new (2).webp',
-  '/desktop-background/couples-new (3).webp',
-  '/desktop-background/couples-new (4).webp',
-  '/desktop-background/couples-new (5).webp',
+  '/desktop-background/couples (1).webp',
+  '/desktop-background/couples (2).webp',
+  '/desktop-background/couples (3).webp',
+  '/desktop-background/couples (4).webp',
+  '/desktop-background/couples (5).webp',
 ]
 
 const mobileBackgroundSrcs: readonly string[] = [
-'/mobile-background/couples-new (1).webp',
-'/mobile-background/couples-new (5).webp',
-'/mobile-background/couples-new (7).webp',
+'/mobile-background/couples (1).webp',
+'/mobile-background/couples (10).webp',
+'/mobile-background/couples (9).webp',
+'/mobile-background/couples (6).webp',
+'/mobile-background/couples (8).webp',
 ]
 
 const SHOW_BUTTERFLIES = false

@@ -154,30 +154,26 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="md:hidden flex items-center h-full">
-            {/* Decorative halo to improve tap target and visual affordance */}
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-motif-cream/20 via-motif-cream/10 to-transparent blur-md pointer-events-none" />
-              <StaggeredMenu
-                position="left"
-                items={menuItems}
-                socialItems={[]}
-                displaySocials={false}
-                menuButtonColor="var(--color-motif-cream)"
-                openMenuButtonColor="var(--color-motif-cream)"
-                changeMenuColorOnOpen={true}
-                colors={[
-                  "var(--color-motif-deep)",
-                  "var(--color-motif-deep)",
-                  "var(--color-motif-deep)",
-                  "var(--color-motif-deep)",
-                ]}
-                accentColor="var(--color-motif-soft)"
-                isFixed={true}
-                onMenuOpen={() => {}}
-                onMenuClose={() => {}}
-              />
-            </div>
+          <div className="md:hidden flex items-center justify-end h-full">
+            <StaggeredMenu
+              position="left"
+              items={menuItems}
+              socialItems={[]}
+              displaySocials={false}
+              menuButtonColor="var(--color-motif-cream)"
+              openMenuButtonColor="var(--color-motif-cream)"
+              changeMenuColorOnOpen={false}
+              colors={[
+                "var(--color-motif-deep)",
+                "var(--color-motif-deep)",
+                "var(--color-motif-deep)",
+                "var(--color-motif-deep)",
+              ]}
+              accentColor="var(--color-motif-soft)"
+              isFixed={true}
+              onMenuOpen={() => {}}
+              onMenuClose={() => {}}
+            />
           </div>
         </div>
 

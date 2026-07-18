@@ -67,7 +67,7 @@ function LoveStoryTitle() {
           color: "var(--color-welcome-navy)",
         }}
       >
-        Celebration of Love
+       Our Love Story
       </span>
       <span
         aria-hidden
@@ -80,9 +80,9 @@ function LoveStoryTitle() {
             "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 95%, white), 0 0 10px color-mix(in srgb, var(--color-welcome-bg) 65%, white)",
         }}
       >
-        Join us as we say 'I do'
+        Our Journey to Forever
       </span>
-      <span className="sr-only">Join us as we say 'I do'</span>
+      <span className="sr-only">Our Journey to Forever</span>
     </h1>
   )
 }
@@ -131,15 +131,12 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isFirst={true}
-  title="A Seat Reserved for You"
-  imageSrc="/mobile-background/couples-new (1).webp"
+  title="First Friendly Date"
+  imageSrc="/LoveStory/story one.webp"
   text={
     <>
       <p className="mb-4">
-      Every wedding has its own story, but the most meaningful chapters are written with the people who choose to celebrate it together.
-      </p>
-      <p className="mb-4">
-      We would be honored to have you join us on August 31, 2026 at 4:00 PM, as we begin our forever at Don Jose Heights Atrium and Clubhouse.
+      Ours is not an ordinary love story but just like many others, it started with a simple message "Hi" and so they say, the rest is history. 
       </p>
     </>
   }
@@ -148,15 +145,12 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/mobile-background/couples-new (2).webp"
-  title="The Beginning of Forever"
+  imageSrc="/LoveStory/story two.webp"
+  title="When Two Paths Crossed"
   text={
     <>
       <p className="mb-4">
-      This day marks more than a wedding—it marks the first page of a lifetime we'll write together.
-      </p>
-      <p className="mb-4">
-      We hope you'll be there to witness the promises, the smiles, the happy tears, and the beautiful beginning of our next chapter.
+      Three years ago, destiny brought us together in the same workplace. The first time we saw each other, never did we imagined that we just found our future. 
       </p>
     </>
   }
@@ -165,15 +159,12 @@ export function LoveStory() {
 <StorySection
   theme="light"
   layout="image-left"
-  imageSrc="/mobile-background/couples-new (4).webp"
-  title="Rooted in Love"
+  imageSrc="/LoveStory/story three.webp"
+  title="An Unexpected Beginning"
   text={
     <>
       <p>
-      Before we found each other, we were shaped by families who taught us how to love, forgive, and dream.
-      </p>
-      <p className="mb-4">
-      Today, those separate paths become one, surrounded by the people whose love brought us to this moment.
+      A man who was broken and in pain at that time unexpectedly cross paths with a woman who was contented and has entrusted her single life to God. A gap of 15 years in age, he is a widow and she is  young. Both did not expect what's coming but God has a beautiful plan for them.
       </p>
     </>
   }
@@ -182,15 +173,12 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/mobile-background/couples-new (5).webp"
-  title="Witness Our Promise"
+  imageSrc="/LoveStory/story four.webp"
+  title="From Conversations to Connection"
   text={
     <>
       <p>
-      A wedding lasts for a day, but the vows spoken will guide us for a lifetime.
-      </p>
-      <p className="mb-4">
-      Having you witness this sacred promise will make our commitment even more meaningful, knowing it is shared with those closest to our hearts.
+      One short message and one warm reply is all that it takes. Small talks turned to hours of conversations, they got deeper and more personal as the days past and days turned into weeks and months without ceasing. He was healing and found a reason to be happy again while she has found peace and sincere connection with her newfound friend. 
       </p>
     </>
   }
@@ -200,15 +188,12 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isLast={true}
-  imageSrc="/mobile-background/couples-new (6).webp"
-  title="Let Us Celebrate Together"
+  imageSrc="/LoveStory/story five.webp"
+  title="When Friendship Became Love"
   text={
     <>
-      <p>
-      Once the vows have been spoken, the celebration begins.
-      </p>
       <p className="mb-4">
-      We can't wait to laugh, dine, dance, and create unforgettable memories with everyone who has been part of our journey.
+      The friendship quickly blossomed to something more. Both were caught off guard and before they realize it, they were already deeply in love. It was not easy and quite complicated as they live in different worlds with different priorities and different realities in life. 
       </p>
     </>
   }
@@ -217,15 +202,12 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/mobile-background/couples-new (7).webp"
-  title="A Memory We Will Always Treasure"
+  imageSrc="/LoveStory/story six.webp"
+  title="Love That Chose to Stay"
   text={
     <>
-      <p>
-      Years from now, we'll look back on our wedding photographs and remember every smile that surrounded us.
-      </p>
       <p className="mb-4">
-      Knowing you were there will forever remind us that our happiest day was shared with the people we love most.
+      They were not supposed to be a couple so their relationship was put to the tests but real love is strong and prevailing. She never judged him from the start and just accepted him as he is. He never doubted her feeling and tendencies, he just loved her for who she is. She made him happy and restored his purpose in life. 
       </p>
     </>
   }
@@ -235,15 +217,12 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isLast={true}
-  imageSrc="/gallery-design/box (2).jpg"
-  title="Until We Meet at the Aisle"
+  imageSrc="/LoveStory/story seven.webp"
+  title="Written by Gods Perfect Timing"
   text={
     <>
-      <p>
-      Thank you for taking a place in our story.
-      </p>
       <p className="mb-4">
-      We look forward to welcoming you on August 31, 2026, and celebrating a day filled with love, joy, and the beginning of forever.
+      With faith in God and complete trust in His plan, they realized that they are totally made for each other and that His timing couldn't be more perfect. A match that was destined before they even met and is destined for the love of a lifetime together as husband and wife. 
       </p>
     </>
   }
