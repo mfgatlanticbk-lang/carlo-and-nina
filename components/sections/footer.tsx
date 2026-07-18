@@ -241,19 +241,19 @@ export function Footer() {
         </div>
         <div className="pointer-events-none absolute bottom-0 left-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* <img
             src="/decoration/decorations/botto-left-corner.png"
             alt=""
             className={CORNER_DECO_CLASS}
-          />
+          /> */}
         </div>
         <div className="pointer-events-none absolute bottom-0 right-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* <img
             src="/decoration/decorations/botto-right-corner.png"
             alt=""
             className={CORNER_DECO_CLASS}
-          />
+          /> */}
         </div>
 
         {/* Monogram + couple header */}
