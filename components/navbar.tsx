@@ -22,7 +22,7 @@ const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#messages", label: "Messages" },
   { href: "#details", label: "Details" },
-  { href: "#accommodation", label: "Stay" },
+  // { href: "#accommodation", label: "Stay" },
   { href: "#entourage", label: "Entourage" },
   { href: "#sponsors", label: "Sponsors" },
   { href: "#guest-list", label: "RSVP" },
@@ -34,7 +34,6 @@ export function Navbar() {
   const siteConfig = useSiteConfig()
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("#home")
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const rafIdRef = useRef<number | null>(null)
 
@@ -91,7 +90,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 ${mobileMenuOpen ? "z-[110]" : "z-50"} transition-all duration-700 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
         isScrolled
           ? "bg-motif-deep backdrop-blur-xl shadow-[0_10px_40px_rgba(91,102,85,0.35)] border-b border-motif-medium/70"
           : "bg-motif-deep/92 backdrop-blur-lg border-b border-motif-medium/60"
@@ -155,7 +154,7 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="md:hidden relative z-[110] flex items-center justify-end h-full">
+          <div className="md:hidden flex items-center justify-end h-full">
             <StaggeredMenu
               position="left"
               items={menuItems}
@@ -172,8 +171,8 @@ export function Navbar() {
               ]}
               accentColor="var(--color-motif-soft)"
               isFixed={true}
-              onMenuOpen={() => setMobileMenuOpen(true)}
-              onMenuClose={() => setMobileMenuOpen(false)}
+              onMenuOpen={() => {}}
+              onMenuClose={() => {}}
             />
           </div>
         </div>

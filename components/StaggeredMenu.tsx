@@ -1,7 +1,4 @@
-'use client';
-
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 export interface StaggeredMenuItem {
@@ -50,7 +47,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuClose
 }: StaggeredMenuProps) => {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const openRef = useRef(false);
 
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -70,19 +66,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const busyRef = useRef(false);
 
   const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!open || !isFixed) return;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [open, isFixed]);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -302,39 +285,33 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     animateIcon(target);
   }, [playOpen, playClose, animateColor, animateIcon, onMenuOpen, onMenuClose]);
 
-  const closeMenu = useCallback(() => {
-    if (!openRef.current) return;
-    openRef.current = false;
-    setOpen(false);
-    onMenuClose?.();
-    playClose();
-    animateColor(false);
-    animateIcon(false);
-  }, [onMenuClose, playClose, animateColor, animateIcon]);
-
   const handleItemClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
-      e.preventDefault();
-
+      // If it's an in-page anchor, smooth scroll to the element
       if (link && link.startsWith('#')) {
+        e.preventDefault();
         const targetId = link.slice(1);
         const el = typeof document !== 'undefined' ? document.getElementById(targetId) : null;
         if (el) {
-          const nav = document.querySelector('nav');
-          const navHeight = nav?.getBoundingClientRect().height ?? 64;
-          const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
-          window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Optionally update the URL hash without jumping
           if (typeof history !== 'undefined') {
             history.replaceState(null, '', link);
           }
         }
-      } else if (link) {
-        window.location.href = link;
       }
 
-      closeMenu();
+      // Close the menu after any click
+      if (openRef.current) {
+        openRef.current = false;
+        setOpen(false);
+        onMenuClose?.();
+        playClose();
+        animateColor(false);
+        animateIcon(false);
+      }
     },
-    [closeMenu]
+    [onMenuClose, playClose, animateColor, animateIcon]
   );
 
   const toggleButton = (
@@ -356,11 +333,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     </button>
   );
 
-  const menuOverlay = (
-    <div
-      className={`sm-scope ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden pointer-events-none' : 'relative z-40 w-full h-full'} ${open ? 'pointer-events-auto z-[100]' : isFixed ? 'z-0' : ''}`}
-      data-open={open || undefined}
-    >
+  return (
+    <>
+      {isFixed ? (
+        <div className={(className ? className + ' ' : '') + 'sm-toggle-host relative z-[60] flex items-center justify-center'}>
+          {toggleButton}
+        </div>
+      ) : null}
+      <div
+        className={`sm-scope ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden' : 'w-full h-full'} ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        data-open={open || undefined}
+      >
       <div
         className="staggered-menu-wrapper relative w-full h-full z-40"
         style={accentColor ? ({ ['--sm-accent' as any]: accentColor } as React.CSSProperties) : undefined}
@@ -421,9 +404,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             >
               {items && items.length ? (
                 items.map((it, idx) => (
-                  <li className="sm-panel-itemWrap relative leading-none" key={it.label + idx}>
+                  <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                     <a
-                      className="sm-panel-item relative z-[1] font-semibold cursor-pointer leading-none tracking-[-2px] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] touch-manipulation"
+                      className="sm-panel-item relative font-semibold cursor-pointer leading-none tracking-[-2px] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
                       style={{ color: MENU_TEXT }}
                       href={it.link}
                       onClick={(e) => handleItemClick(e, it.link)}
@@ -478,12 +461,12 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       <style>{`
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; }
-.sm-scope:not([data-open]) { z-index: 0; pointer-events: none !important; }
+.sm-scope:not([data-open]) { z-index: 0; pointer-events: none; }
+.sm-scope[data-open] { z-index: 60; pointer-events: auto; }
 .sm-scope:not([data-open]) .staggered-menu-panel { pointer-events: none; visibility: hidden; }
 .sm-scope:not([data-open]) .sm-prelayers { pointer-events: none; visibility: hidden; }
 .sm-scope[data-open] .staggered-menu-panel { pointer-events: auto; visibility: visible; }
-.sm-scope[data-open] .sm-panel-item,
-.sm-scope[data-open] .sm-socials-link { pointer-events: auto; touch-action: manipulation; }
+.sm-scope[data-open] .sm-panel-item { pointer-events: auto; }
 .sm-toggle-host { display: flex; align-items: center; justify-content: center; }
 .sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 2em; background: transparent; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
@@ -492,7 +475,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-toggle-host .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform, opacity; }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }
 .sm-scope .sm-icon { position: relative; width: 22px; height: 16px; flex: 0 0 22px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
-.sm-scope .sm-panel-itemWrap { position: relative; line-height: 1; }
+.sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform, opacity; }
 .sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: var(--color-motif-deep); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6.5em 2.25em 2.25em 2.25em; overflow-y: auto; z-index: 10; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
@@ -529,17 +512,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); }
 }
       `}</style>
-    </div>
-  );
-
-  return (
-    <>
-      {isFixed ? (
-        <div className={(className ? className + ' ' : '') + 'sm-toggle-host relative z-[110] flex items-center justify-center'}>
-          {toggleButton}
-        </div>
-      ) : null}
-      {mounted && isFixed ? createPortal(menuOverlay, document.body) : !isFixed ? menuOverlay : null}
+      </div>
     </>
   );
 };
