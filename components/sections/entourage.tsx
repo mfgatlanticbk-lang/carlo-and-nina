@@ -940,7 +940,7 @@ export function Entourage() {
                       )}
 
                       {hasBestManOrMaid && (
-                        <TwoColumnLayout leftTitle="Best Men" rightTitle="Maid of Honor">
+                        <TwoColumnLayout leftTitle="Best Man" rightTitle="Maid of Honor">
                           {(() => {
                             const maxLen = Math.max(bestMan.length, maidOfHonor.length)
                             const rows = []
