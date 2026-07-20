@@ -65,7 +65,7 @@ export const siteConfig = {
     // }
   },
   ceremony: {
-    location: "Don Jose Heights Atrium Hall",
+    location: "Don Jose Heights Atrium Hall ",
     venue: "Doña Carmen Ave. Don Jose Heights Subd. Brgy. Commonwealth, Quezon City, Philippines",
     map: "https://maps.app.goo.gl/6Uo3aPZHLPf4DmNAA",
     date: "August 31, 2026",
@@ -76,7 +76,7 @@ export const siteConfig = {
     image: ["/Details/ceremony.webp", "/Details/ceremony2.webp", "/Details/ceremony3.webp"],
   },
   reception: {
-    location: "Don Jose Heights Atrium Clubhouse",
+    location: "Don Jose Heights Clubhouse",
     venue: "Doña Carmen Ave. Don Jose Heights Subd. Brgy. Commonwealth, Quezon City, Philippines",
     map: "https://maps.app.goo.gl/rmudeAwUsF5hmCq78",
     date: "December 12, 2026",

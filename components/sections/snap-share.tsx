@@ -366,8 +366,8 @@ export function SnapShare() {
             </p>
           </ContentCard>
 
-          {/* <div className="w-full min-w-0 space-y-5 sm:space-y-6 lg:order-2">
-            <ContentCard>
+          <div className="w-full min-w-0 space-y-5 sm:space-y-6 lg:order-2">
+            {/* <ContentCard>
               <h4
                 className={`${cinzel.className} ${ct.cardTitle} text-center font-semibold uppercase tracking-[0.08em]`}
                 style={{ color: palette.heading }}
@@ -405,9 +405,9 @@ export function SnapShare() {
               >
                 Scan with any camera app to open the full invitation and schedule.
               </p>
-            </ContentCard>
+            </ContentCard> */}
 
-            <ContentCard>
+            {/* <ContentCard>
               <h5
                 className={`${cinzel.className} ${ct.body} text-center font-semibold uppercase tracking-[0.1em]`}
                 style={{ color: palette.heading }}
@@ -467,9 +467,9 @@ export function SnapShare() {
                   {copiedAllHashtags ? "All Copied!" : "Copy All"}
                 </span>
               </button>
-            </ContentCard>
+            </ContentCard> */}
 
-            <ContentCard>
+            {/* <ContentCard>
               <h5
                 className={`${cinzel.className} ${ct.cardTitle} text-center font-semibold uppercase tracking-[0.08em]`}
                 style={{ color: palette.heading }}
@@ -508,7 +508,7 @@ export function SnapShare() {
                   </button>
                 ))}
               </div>
-            </ContentCard>
+            </ContentCard> */}
 
             {uploadLink && (
               <ContentCard>
@@ -585,7 +585,7 @@ export function SnapShare() {
                 </div>
               </ContentCard>
             )}
-          </div> */}
+          </div>
         </div>
 
         <div className="mt-6 space-y-2 text-center sm:mt-8 md:mt-10">
