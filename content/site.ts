@@ -136,9 +136,9 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     subtitle: "Songs that have been part of our journey together",
     playlistName: "Toto & May Wedding",
     embedUrl:
-    //https://open.spotify.com/embed/playlist/3L2IhO6I104rZIYVCEyncJ?utm_source=generator&theme=0&si=8b59b4d481114785
-      "https://open.spotify.com/embed/playlist/3L2IhO6I104rZIYVCEyncJ?utm_source=generator&theme=0&si=8b59b4d481114785",
-    spotifyUrl: "https://open.spotify.com/playlist/3L2IhO6I104rZIYVCEyncJ",
+    //https://open.spotify.com/embed/playlist/3is6hNTXdtAZpGSfeGyxx8?utm_source=generator&si=109a03ec62b5459a
+      "https://open.spotify.com/embed/playlist/3is6hNTXdtAZpGSfeGyxx8?utm_source=generator&theme=0&si=109a03ec62b5459a",
+    spotifyUrl: "https://open.spotify.com/playlist/3is6hNTXdtAZpGSfeGyxx8",
   },
   snapShare: {
     googleDriveLink:
