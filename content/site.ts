@@ -13,16 +13,16 @@ export const siteConfig = {
     backgroundMusic:"/background_music/Keenan Te - Rest of My Life (Wedding Version).mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSfKXj_u3AgTP3DOCoYFjcG2dr9RVfAKy1rj8_nBikgihWHLLQ/formResponse",   //done
-    message: "https://script.google.com/macros/s/AKfycbw2s0D4xLBLE3I47XNJGluv_42XDIE-73vpTQlO9TC6C8Sa1RAC6VyrvrvM4h7mW8wp4w/exec",  //done
-    guestList: "https://script.google.com/macros/s/AKfycbzzNPlh5vP1Rq4wc42uvFcuSqe2oIIS77gUekf04sA9_Jq-TMX5YvV5b532zD1epKUb6A/exec",  //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbx00EXh0FjJ3tLdVIMoexvqD_sA1Ya0dVzFQ0ddCY9jXsoW_8Xm1ix4ZEvSTlJmx0reYQ/exec",   //done
-    entourage: "https://script.google.com/macros/s/AKfycbwhkaucMi7NvUzTZ6e9AReD95b-rs3GO09kjqN6FmRhbGeys26GtM--5pMl53yL0MMFoA/exec",  //done
-    sponsors: "https://script.google.com/macros/s/AKfycbzu69SGFaQ1d8JU8xO8o3pJpxtIuyxBI4_2R4UflLmlWPEhSIFkfNc5ofnzxW7fdrdO/exec",  //done 
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSfZm5-4CMAQIfsIsdmHik5QxgFqCP9CrQ27y0JhjIz__zimhQ/formResponse",   //done
+    message: "https://script.google.com/macros/s/AKfycbzHc0EAyH0mQ8IDCX1KnD5Sy3iNrv-fvP6-6_OxJoCNIQi7iZ5mNtQv-UeOvRsnd18j/exec",  //done
+    guestList: "https://script.google.com/macros/s/AKfycbxVd3g0Pui7Ed420dq4A51fHXhZk2Tpp8r8559_SRvc-jJpvk-VSw5P2wViCysDU2ht/exec",  //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbwV8bltkrU-QBLWAMuq7AzUvVjLPuPffv4RV5n78E0pjPgR_UR_BQsR2x42qCF3-fp2/exec",   //done
+    entourage: "https://script.google.com/macros/s/AKfycbxs73ttAyXxH527YTqs7NF5sCgjXkUDaHYs74ihIaH9rjorA9cdK9RpPNqPeOGvd5_c/exec",  //done
+    sponsors: "https://script.google.com/macros/s/AKfycbyDDLvyMYzDd2hmN5fwQgprhjau8T5YX_bp12I07yEfQOGgHfhS0LWg5v_AOqDK4FUl/exec",  //done 
     proposalResponses: "https://script.google.com/macros/s/AKfycbwIUDKMoMIHVwbmr6KbgmBtlGRpMGj1Z9maeHSEwsFaXNi0dAH8WYhqbtiAfg_p5D4lgw/exec", // uses entourage script with action: proposal
-    weddingDetails: "https://script.google.com/macros/s/AKfycbwlxVhR5Hq-vPm6yEanBSSd45AAhP2opA1yjTZwdyx0D7wPTjaKwJuri-_uc_jHT5V7hA/exec",   //done
+    weddingDetails: "https://script.google.com/macros/s/AKfycbwtpWcRi0MfnDm2Zk5RcWrgKWcc_kTR3bpVbSVZpvvVj5-Z4wUZxFT5xpbbEvgOMKYp/exec",   //done
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1PxlVp4NBRGyAv68p_YZ0dd-s23tjfzW5Vhv403EZvDU/edit?usp=sharing", 
+    googleShare: "https://docs.google.com/spreadsheets/d/1K952wOAK-0U4SRL4xa9DWHjJ4dr7m2VvsiCKd8D4mC4/edit?usp=sharing", 
   },
   wedding: {
     date: "January 14, 2027",
@@ -152,15 +152,15 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink:
-      "https://drive.google.com/drive/folders/1oLDrdvd7nZtkk8Gz_xMgXC9KTplOV5Z-?usp=sharing",
+      "https://drive.google.com/drive/folders/1Jpz2_rmDy6kxuRwKIhpzNfHEzNx4aIrS?usp=sharing",
     albumQR: "/QR/AlbumQR.png",
     hashtag: ["#CarloandNiñaWedding"],
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
   accommodation: {
     coordinator: {
-      name: "Gayle Kathleen Asoy Gable",
-      phone: "0909 912 3844",
+      name: "Imbitado Events",
+      phone: "0926 058 5954",
     },
     hotels: [
       {
