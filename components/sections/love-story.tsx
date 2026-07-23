@@ -125,45 +125,45 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isFirst={true}
-  title="First Friendly Date"
+  title="How It All Began"
   imageSrc="/LoveStory/loveStory (1).webp"
   text={
     <>
       <p className="mb-4">
-      Ours is not an ordinary love story but just like many others, it started with a simple message "Hi" and so they say, the rest is history. 
+      Every love story is different, and this one began the simplest way — a quiet hello that neither of them expected would lead to forever.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="dark"
   layout="image-right"
   imageSrc="/LoveStory/loveStory (2).webp"
-  title="When Two Paths Crossed"
+  title="When Paths Crossed"
   text={
     <>
       <p className="mb-4">
-      Three years ago, destiny brought us together in the same workplace. The first time we saw each other, never did we imagined that we just found our future. 
+      Carl and Niña's paths crossed at a moment neither of them planned for. Looking back now, they can see it was the beginning of something neither of them saw coming.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="light"
   layout="image-left"
   imageSrc="/LoveStory/loveStory (3).webp"
-  title="An Unexpected Beginning"
+  title="Getting to Know Each Other"
   text={
     <>
       <p>
-      A man who was broken and in pain at that time unexpectedly crossed paths with a woman who was contented and has entrusted her single life to God. A gap of 15 years in age, he is a widow and she is  young. Both did not expect what's coming but God has a beautiful plan for them.
+      What started as an ordinary meeting slowly became something more meaningful. Two different lives, two different journeys, brought together at just the right time.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="dark"
   layout="image-right"
@@ -172,12 +172,12 @@ export function LoveStory() {
   text={
     <>
       <p>
-      One short message and one warm reply is all that it takes. Small talks turned to hours of conversations, they got deeper and more personal as the days passed and days turned into weeks and months without ceasing. He was healing and found a reason to be happy again while she has found peace and sincere connection with her newfound friend. 
+      One conversation led to another, and soon the small talks turned into hours of talking about everything and nothing at all. Days turned into weeks, and weeks into months, and with every conversation, they found comfort and joy in each other's company.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="light"
   layout="image-left"
@@ -187,36 +187,36 @@ export function LoveStory() {
   text={
     <>
       <p className="mb-4">
-      The friendship quickly blossomed to something more. Both were caught off guard and before they realize it, they were already deeply in love. It was not easy and quite complicated as they live in different worlds with different priorities and different realities in life. 
+      Somewhere along the way, friendship quietly turned into love. Before they knew it, Carl and Niña had fallen for one another, and there was no turning back.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="dark"
   layout="image-right"
   imageSrc="/LoveStory/loveStory (6).webp"
-  title="Love That Chose to Stay"
+  title="Growing Together"
   text={
     <>
       <p className="mb-4">
-      They were not supposed to be a couple so their relationship was put to the tests but real love is strong and prevailing. She never judged him from the start and just accepted him as he is. He never doubted her feeling and tendencies, he just loved her for who she is. She made him happy and restored his purpose in life. 
+      Like any real love, theirs was tested along the way. But through every season, they chose each other — patient, understanding, and accepting one another exactly as they are.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="light"
   layout="image-left"
   isLast={true}
   imageSrc="/LoveStory/loveStory (7).webp"
-  title="Written by Gods Perfect Timing"
+  title="A Love Made for Forever"
   text={
     <>
       <p className="mb-4">
-      With faith in God and complete trust in His plan, they realized that they are totally made for each other and that His timing couldn't be more perfect. A match that was destined before they even met and is destined for the love of a lifetime together as husband and wife. 
+      With faith and gratitude, Carl and Niña came to realize that they were made for each other — and that every step of their journey led them exactly where they were meant to be.
       </p>
     </>
   }
@@ -225,26 +225,26 @@ export function LoveStory() {
   theme="dark"
   layout="image-right"
   imageSrc="/LoveStory/loveStory (8).webp"
-  title="Love That Chose to Stay"
+  title="A Bond Worth Waiting For"
   text={
     <>
       <p className="mb-4">
-      They were not supposed to be a couple so their relationship was put to the tests but real love is strong and prevailing. She never judged him from the start and just accepted him as he is. He never doubted her feeling and tendencies, he just loved her for who she is. She made him happy and restored his purpose in life. 
+      Through every high and low, their bond only grew stronger. What they found in each other was worth every moment of the journey it took to get here.
       </p>
     </>
   }
 />
-
+ 
 <StorySection
   theme="light"
   layout="image-left"
   isLast={true}
   imageSrc="/mobile-background/couples (3).webp"
-  title="Written by Gods Perfect Timing"
+  title="Celebration of Love"
   text={
     <>
       <p className="mb-4">
-      With faith in God and complete trust in His plan, they realized that they are totally made for each other and that His timing couldn't be more perfect. A match that was destined before they even met and is destined for the love of a lifetime together as husband and wife. 
+      And now, with hearts full of joy and gratitude, Carl and Niña joyfully invite you to join them as they say "I do" and begin their forever together.
       </p>
     </>
   }
