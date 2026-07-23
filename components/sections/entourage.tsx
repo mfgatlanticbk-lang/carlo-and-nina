@@ -66,7 +66,7 @@ function EntourageCoupleLabel({ groom, bride }: { groom: string; bride: string }
   }
 
   return (
-    <div className="flex items-center justify-center gap-2.5 sm:gap-3.5">
+    <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 mt-8 sm:mt-10 md:mt-12">
       <span className="h-px w-5 sm:w-7 md:w-9" style={lineStyle} aria-hidden />
       <p
         className={`${cinzel.className} ${sectionType.label} shrink-0 py-0.5 font-semibold uppercase leading-normal tracking-[0.34em] min-[400px]:tracking-[0.38em] sm:tracking-[0.44em]`}
@@ -123,7 +123,7 @@ function EntourageTitle() {
         aria-hidden
         className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
         style={{
-          marginTop: "var(--script-overlap)",
+          marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
           fontSize: "var(--script-size)",
           color: "var(--color-welcome-green)",
           textShadow:
@@ -496,7 +496,7 @@ export function Entourage() {
         <div className="pointer-events-none absolute left-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-left-corner.png"
+            src="/decoration/top-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -504,7 +504,7 @@ export function Entourage() {
         <div className="pointer-events-none absolute right-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-right-corner.png"
+            src="/decoration/top-right-decos.png"
             alt=""
             className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
           />
@@ -512,7 +512,7 @@ export function Entourage() {
         <div className="pointer-events-none absolute bottom-0 left-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-left-corner.png"
+            src="/decoration/bottom-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -520,7 +520,7 @@ export function Entourage() {
         <div className="pointer-events-none absolute bottom-0 right-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-right-corner.png"
+            src="/decoration/bottom-right-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -533,7 +533,7 @@ export function Entourage() {
           bride={siteConfig.couple.brideNickname || siteConfig.couple.bride}
         />
 
-        <div className="my-4 sm:my-5 md:my-6">
+        <div className="mt-6 mb-4 sm:mt-8 sm:mb-5 md:mt-10 md:mb-6">
           <EntourageTitle />
         </div>
 

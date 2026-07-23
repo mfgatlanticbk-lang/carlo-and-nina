@@ -9,20 +9,22 @@ import { parseWeddingDate } from "@/lib/wedding-date"
 import Image from "next/image"
 
 const desktopBackgroundSrcs: readonly string[] = [
-  '/desktop-background/couples (1).webp',
-  '/desktop-background/couples (2).webp',
-  '/desktop-background/couples (3).webp',
   '/desktop-background/couples (4).webp',
-  '/desktop-background/couples (5).webp',
+  '/desktop-background/couples (2).webp',
+  '/desktop-background/couples (13).webp',
+  '/desktop-background/couples (20).webp',
+  '/desktop-background/couples (18).webp',
 ]
 
 const mobileBackgroundSrcs: readonly string[] = [
-'/mobile-background/couples (1).webp',
-'/mobile-background/couples (10).webp',
-'/mobile-background/couples (9).webp',
+'/mobile-background/couples (5).webp',
 '/mobile-background/couples (6).webp',
-'/mobile-background/couples (8).webp',
-'/mobile-background/couples( (14).png',
+'/mobile-background/couples (44).webp',
+'/mobile-background/couples (45).webp',
+'/mobile-background/couples (39).webp',
+'/mobile-background/couples (30).webp',
+'/mobile-background/couples (9).webp',
+'/mobile-background/couples (10).webp',
 ]
 
 const SHOW_BUTTERFLIES = false
@@ -564,8 +566,8 @@ export function Hero() {
             className="w-full max-w-[min(90vw,22rem)] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl aspect-[528/473] mx-auto drop-shadow-2xl"
             style={{
               backgroundColor: "var(--color-motif-cream)",
-              WebkitMaskImage: "url(/Details/couplename.png)",
-              maskImage: "url(/Details/couplename.png)",
+              WebkitMaskImage: "url(/Details/coupleName.png)",
+              maskImage: "url(/Details/coupleName.png)",
               WebkitMaskSize: "contain",
               maskSize: "contain",
               WebkitMaskRepeat: "no-repeat",

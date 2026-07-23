@@ -112,7 +112,7 @@ function DetailsTitle() {
         aria-hidden
         className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
         style={{
-          marginTop: "var(--script-overlap)",
+          marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
           fontSize: "var(--script-size)",
           color: "var(--color-motif-accent)",
           textShadow:
@@ -149,76 +149,117 @@ const ct = {
   reminderBody: "text-[0.875rem] sm:text-[0.9375rem] md:text-base lg:text-lg",
 } as const
 
-const attireGuide = {
-  sponsors: {
-    image: "/Details/sponsors.png",
-    imageAspect: "669/373",
-    ladies: {
-      colors: ["#D8B08F", "#E9C8B3", "#CFA08A"] as const,
-      description: "Champagne, Soft Beige or Nude elegant gown",
-    },
-    gentlemen: {
-      colors: ["#111111", "#F5F5F5", "#CFA08A"] as const,
-      description: "Black formal suits with white inner shirts, complemented by champagne or nude neckties",
-    },
-  },
-  
-  entourage: {
-    image: "/Details/entourage.png",
-    imageAspect: "669/373",
-    ladies: {
-      colors: ["#F0B39D", "#E7A8B2", "#D89AA7", "#F3C9B4"] as const,
-      description: "Floor-length gowns in Peach and  Blush Pink",
-    },
-    gentlemen: {
-      colors: ["#B8B8B8", "#FFFFFF", "#D88C97"] as const,
-      description: "Light gray suits with white inner shirts and Peach neckties",
-    },
-  },
-  
-  guests: {
-    image: "/Details/new-guest-attire.png",
-    imageAspect: "677/369",
-    ladies: {
-      colors: ["#FFB4A7", "#DE8189", "#F2CFBB", "#DDBC9D"] as const,
-      description: "Formal Dress",
-    },
-    gentlemen: {
-      colors: ["#FFB4A7", "#DE8189", "#F2CFBB", "#DDBC9D"] as const,
-      description: "Formal Attire",
-    },
-  },
-  guests2: {
-    image: "/Details/guest (5).png",
-    imageAspect: "677/369",
-    ladies: {
-      colors: ["#BB9F89", "#CFAEA7", "#E9CFC2", "#E5D7CE"] as const,
-      description: "Burgundy, Maroon, Dark Brown",
-    },
-    gentlemen: {
-      colors: ["#C3878C", "#ECB4BC", "#EBA7B3", "#E8B3A7"] as const,
-      description: "Burgundy, Maroon, Dark Brown",
-    },
-  },
-} as const
-
-function ColorPalette({ colors }: { colors: readonly string[] }) {
-  const widthClass = colors.length > 4 ? "max-w-md" : "max-w-xs sm:max-w-sm"
-
+function AttireCollageImage({
+  src,
+  alt,
+  priority = false,
+}: {
+  src: string
+  alt: string
+  priority?: boolean
+}) {
   return (
     <div
-      className={`mx-auto flex h-8 w-full overflow-hidden rounded-full border-2 border-white sm:h-9 ${widthClass}`}
-      role="img"
-      aria-label={`Color palette: ${colors.join(", ")}`}
+      className="relative w-full overflow-hidden"
+      style={{
+        aspectRatio: "9/16",
+        background:
+          "linear-gradient(180deg, var(--color-welcome-bg-soft) 0%, var(--color-welcome-bg) 100%)",
+      }}
     >
-      {colors.map((color) => (
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        sizes="(max-width: 640px) 280px, (max-width: 1024px) 50vw, 320px"
+        priority={priority}
+      />
+    </div>
+  )
+}
+
+function AttireSectionHeading({ title }: { title: string }) {
+  return (
+    <h4
+      className={`${theSeasons.className} ${ct.sectionTitle} text-center uppercase font-semibold leading-tight tracking-[0.12em] md:tracking-[0.15em]`}
+      style={{ color: detailText.heading }}
+    >
+      {title}
+    </h4>
+  )
+}
+
+function AttireRoleCard({
+  label,
+  description,
+  image,
+  alt,
+  priority = false,
+}: {
+  label: string
+  description: string
+  image: string
+  alt: string
+  priority?: boolean
+}) {
+  return (
+    <div className="relative group mx-auto w-full max-w-[320px]">
+      <div
+        className="absolute -inset-1 rounded-2xl opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-100"
+        style={{
+          background:
+            "linear-gradient(to bottom, color-mix(in srgb, var(--color-welcome-green) 16%, transparent), color-mix(in srgb, var(--color-motif-accent) 10%, transparent))",
+        }}
+      />
+      <div
+        className="relative overflow-hidden rounded-xl border transition-all duration-300 group-hover:-translate-y-0.5 sm:rounded-2xl"
+        style={cardStyle}
+      >
+        <AttireCollageImage src={image} alt={alt} priority={priority} />
         <div
-          key={color}
-          className="min-w-0 flex-1"
-          style={{ backgroundColor: color }}
-          title={color}
-        />
-      ))}
+          className="border-t px-4 py-4 text-center sm:px-5 sm:py-5"
+          style={{ borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)" }}
+        >
+          <p
+            className={`${cinzel.className} ${ct.label} uppercase tracking-[0.22em] font-semibold`}
+            style={{ color: detailText.label }}
+          >
+            {label}
+          </p>
+          <p
+            className={`font-goudy-italic ${ct.bodyLg} mt-2 leading-relaxed`}
+            style={{ color: detailText.body }}
+          >
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function AttireRoleNote({
+  label,
+  description,
+}: {
+  label: string
+  description: string
+}) {
+  return (
+    <div className="px-4 py-4 text-center sm:px-6 sm:py-5">
+      <p
+        className={`${cinzel.className} ${ct.label} uppercase tracking-[0.22em] font-semibold`}
+        style={{ color: detailText.label }}
+      >
+        {label}
+      </p>
+      <p
+        className={`font-goudy-italic ${ct.bodyLg} mt-2 leading-relaxed`}
+        style={{ color: detailText.body }}
+      >
+        {description}
+      </p>
     </div>
   )
 }
@@ -305,94 +346,85 @@ function ReminderCard({
   )
 }
 
-function AttirePaletteGroup({
-  label,
-  colors,
-  description,
-}: {
-  label: string
-  colors: readonly string[]
-  description: string
-}) {
-  return (
-    <div className="space-y-2 sm:space-y-2.5">
-      <p
-        className={`${cinzel.className} text-center ${ct.labelSm} uppercase tracking-[0.16em] font-semibold`}
-        style={{ color: detailText.label }}
-      >
-        {label}
-      </p>
-      <ColorPalette colors={colors} />
-      <p
-        className={`font-goudy-italic ${ct.body} px-1 text-center leading-relaxed`}
-        style={{ color: detailText.body }}
-      >
-        {description}
-      </p>
-    </div>
-  )
-}
-
-function AttireCard({
+function AttireSponsorsCard({
   title,
+  ladies,
+  gentlemen,
   image,
   alt,
-  imageAspect,
-  children,
-  imageClassName = "object-contain object-center",
 }: {
   title: string
+  ladies: { label: string; description: string }
+  gentlemen: { label: string; description: string }
   image: string
   alt: string
-  imageAspect: string
-  children: ReactNode
-  imageClassName?: string
 }) {
   return (
-    <div className="relative group h-full">
+    <div className="relative group mx-auto w-full max-w-[320px]">
       <div
         className="absolute -inset-1 rounded-2xl opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background:
-            "linear-gradient(to bottom right, color-mix(in srgb, var(--color-welcome-green) 18%, transparent), transparent)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--color-welcome-green) 14%, transparent), color-mix(in srgb, var(--color-motif-accent) 8%, transparent))",
         }}
       />
       <div
-        className="relative flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-300 sm:rounded-2xl"
+        className="relative overflow-hidden rounded-xl border transition-all duration-300 sm:rounded-2xl"
         style={cardStyle}
       >
+        <AttireCollageImage src={image} alt={alt} priority />
         <div
-          className="border-b px-4 py-3 sm:px-5 sm:py-4"
+          className="border-t"
           style={{ borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)" }}
         >
-          <h4
-            className={`${cinzel.className} ${ct.attireCardTitle} text-center uppercase tracking-[0.22em] font-semibold leading-tight`}
-            style={{ color: detailText.heading }}
+          <div
+            className="border-b px-4 py-4 text-center sm:px-5 sm:py-5"
+            style={{ borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)" }}
           >
-            {title}
-          </h4>
-        </div>
-
-        <div
-          className="relative w-full shrink-0 bg-[#FAF7F2]"
-          style={{ aspectRatio: imageAspect }}
-        >
-          <Image
-            src={image}
-            alt={alt}
-            fill
-            className={`${imageClassName} p-2 transition-transform duration-700 group-hover:scale-[1.01] sm:p-3`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          />
-        </div>
-
-        <div
-          className="flex flex-1 flex-col border-t px-4 py-4 sm:px-5 sm:py-5 md:px-6"
-          style={{ borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)" }}
-        >
-          {children}
+            <AttireSectionHeading title={title} />
+          </div>
+          <div className="divide-y divide-[color-mix(in_srgb,var(--color-motif-deep)_10%,transparent)]">
+            <AttireRoleNote label={ladies.label} description={ladies.description} />
+            <AttireRoleNote label={gentlemen.label} description={gentlemen.description} />
+          </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+function AttirePaletteNote({
+  paletteNote,
+  closing,
+}: {
+  paletteNote: string
+  closing: string
+}) {
+  return (
+    <div
+      className="mx-auto max-w-3xl rounded-xl border px-5 py-5 text-center shadow-sm sm:rounded-2xl sm:px-7 sm:py-6"
+      style={softPanelStyle}
+    >
+      <p
+        className={`font-goudy-italic ${ct.bodyLg} leading-relaxed`}
+        style={{ color: detailText.body }}
+      >
+        {paletteNote}
+      </p>
+      <div
+        className="mx-auto my-5 h-px w-16 sm:w-24"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-deep) 35%, transparent), transparent)",
+        }}
+        aria-hidden
+      />
+      <p
+        className={`font-goudy-italic ${ct.bodyLg} leading-relaxed`}
+        style={{ color: detailText.heading }}
+      >
+        {closing}
+      </p>
     </div>
   )
 }
@@ -647,10 +679,10 @@ function EventVenueCard({
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 
 const COUPLE_IMAGES = [
-  "/gallery-design/box (1).jpg",
-  "/gallery-design/box (2).jpg",
-  "/gallery-design/box (3).jpg",
-  "/gallery-design/box (4).jpg",
+  "/mobile-background/couples (1).webp",
+  "/mobile-background/couples (2).webp",
+  "/mobile-background/couples (3).webp",
+  "/mobile-background/couples (43).webp",
 ]
 
 export function Details() {
@@ -662,10 +694,14 @@ export function Details() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [rotationOffset, setRotationOffset] = useState(0)
 
-  const ceremonyImages = siteConfig.ceremony.image
-  const receptionImages = siteConfig.reception.image
-  const dressCodeColors = ["#FFB4A7", "#DE8189", "#F2CFBB", "#DDBC9D"]
-
+  const ceremonyImages =
+    siteConfig.ceremony.image?.length > 0
+      ? siteConfig.ceremony.image
+      : ["/Details/ceremony.webp"]
+  const receptionImages =
+    siteConfig.reception.image?.length > 0
+      ? siteConfig.reception.image
+      : ceremonyImages
   useEffect(() => {
     if (ceremonyImages.length <= 1) return
     const timer = setInterval(() => {
@@ -709,15 +745,15 @@ export function Details() {
   }
 
   // Venue information from site config
-  const ceremonyVenueName = siteConfig.wedding.venue
+  const ceremonyVenueName = siteConfig.ceremony.location.trim()
   const ceremonyVenueDetail = ""
-  const ceremonyAddress = siteConfig.ceremony.venue
+  const ceremonyAddress = siteConfig.ceremony.venue.trim()
   const ceremonyVenue = `${ceremonyVenueName}, ${ceremonyAddress}`
   const ceremonyMapsLink = siteConfig.ceremony.map
 
-  const receptionVenueName = siteConfig.reception.location
+  const receptionVenueName = siteConfig.reception.location.trim()
   const receptionVenueDetail = ""
-  const receptionAddress = siteConfig.reception.venue
+  const receptionAddress = siteConfig.reception.venue.trim()
   const receptionVenue = `${receptionVenueName}, ${receptionAddress}`
   const receptionMapsLink =
     siteConfig.reception.map ||
@@ -749,7 +785,7 @@ export function Details() {
         <div className="pointer-events-none absolute left-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-left-corner.png"
+            src="/decoration/top-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -757,7 +793,7 @@ export function Details() {
         <div className="pointer-events-none absolute right-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-right-corner.png"
+            src="/decoration/top-right-decos.png"
             alt=""
             className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
           />
@@ -765,7 +801,7 @@ export function Details() {
         <div className="pointer-events-none absolute bottom-0 left-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-left-corner.png"
+            src="/decoration/bottom-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -773,7 +809,7 @@ export function Details() {
         <div className="pointer-events-none absolute bottom-0 right-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-right-corner.png"
+            src="/decoration/bottom-right-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -782,12 +818,12 @@ export function Details() {
         {/* Header */}
         <div className="relative z-20 mx-auto mb-6 max-w-5xl px-6 text-center @container/details sm:mb-8 sm:px-10 md:mb-10 md:px-12">
           <p
-            className={`${cinzel.className} ${sectionType.label} mb-2 font-semibold uppercase tracking-[0.34em] min-[400px]:tracking-[0.38em] sm:tracking-[0.44em]`}
+            className={`${cinzel.className} ${sectionType.label} mb-2 mt-8 font-semibold uppercase tracking-[0.34em] min-[400px]:tracking-[0.38em] sm:mt-10 sm:tracking-[0.44em] md:mt-12`}
             style={{ color: "var(--color-welcome-heading)" }}
           >
             Our Celebration
           </p>
-          <div className="my-4 sm:my-5 md:my-6">
+          <div className="mt-6 mb-4 sm:mt-8 sm:mb-5 md:mt-10 md:mb-6">
             <DetailsTitle />
           </div>
           <p
@@ -811,7 +847,7 @@ export function Details() {
       {/* Venue and Event Information */}
       <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 md:px-8 mb-8 sm:mb-10 md:mb-12 space-y-6 sm:space-y-10 md:space-y-14">
         <EventVenueCard
-          badge="Ceremony & Reception"
+          badge="Ceremony"
           images={ceremonyImages}
           activeImageIndex={currentCeremonyImageIndex}
           locationName={ceremonyVenueName}
@@ -820,7 +856,7 @@ export function Details() {
           day={siteConfig.ceremony.day}
           dateString={siteConfig.ceremony.date}
           time={siteConfig.ceremony.time}
-          venueSectionLabel="Ceremony & Reception"
+          venueSectionLabel="Ceremony Venue"
           mapsLink={ceremonyMapsLink}
           copyId="ceremony"
           fullVenue={ceremonyVenue}
@@ -829,7 +865,7 @@ export function Details() {
           onOpenMaps={openInMaps}
         />
 
-        {/* <EventVenueCard
+        <EventVenueCard
           badge="Reception"
           images={receptionImages}
           activeImageIndex={currentReceptionImageIndex}
@@ -847,7 +883,7 @@ export function Details() {
           copiedItems={copiedItems}
           onCopy={copyToClipboard}
           onOpenMaps={openInMaps}
-        /> */}
+        />
        
       </div>
 
@@ -870,74 +906,44 @@ export function Details() {
             Attire Guidelines
           </h3>
           <p
-            className={`font-goudy-italic ${ct.bodyLg} mt-3 leading-relaxed sm:mt-4`}
+            className={`font-goudy-italic ${ct.bodyLg} mx-auto mt-3 max-w-xl leading-relaxed sm:mt-4`}
             style={{ color: "var(--color-welcome-text)" }}
           >
-            Please dress according to the guidelines below.
+            {siteConfig.dressCode.theme}. Please refer to the guides below.
           </p>
         </div>
 
-        {/* Attire cards — Bridal Party, Principal Sponsors & Guests */}
-        <div className="mb-6 grid grid-cols-1 items-start gap-6 sm:mb-8 sm:gap-8 md:mb-10 sm:grid-cols-2 lg:grid-cols-3">
-          <AttireCard
-            title="Principal Sponsors"
-            image={attireGuide.sponsors.image}
-            imageAspect={"669/373"}
-            alt="Bridal party attire guide"
-          >
-            <div className="grid grid-cols-1 gap-5 sm:gap-6">
-              <AttirePaletteGroup
-                label="Ladies"
-                colors={attireGuide.sponsors.ladies.colors}
-                description={attireGuide.sponsors.ladies.description}
-              />
-              <AttirePaletteGroup
-                label="Gentlemen"
-                colors={attireGuide.sponsors.gentlemen.colors}
-                description={attireGuide.sponsors.gentlemen.description}
-              />
-            </div>
-          </AttireCard>
+        <div className="mx-auto max-w-3xl space-y-10 sm:space-y-12 md:space-y-14">
+          <div className="mx-auto flex max-w-[320px] flex-col items-center gap-10 sm:gap-12 md:gap-14">
+            <AttireSponsorsCard
+              title={siteConfig.dressCode.sponsors.title}
+              ladies={{ label: "Ladies", description: siteConfig.dressCode.sponsors.ladies.description }}
+              gentlemen={{ label: "Gentlemen", description: siteConfig.dressCode.sponsors.gentlemen.description }}
+              image={siteConfig.dressCode.sponsors.image}
+              alt="Primary sponsors attire color collage"
+            />
 
-          <AttireCard
-            title="Entourage"
-            image={attireGuide.entourage.image}
-            imageAspect={attireGuide.entourage.imageAspect}
-            alt="Entourage attire guide"
-          >
-            <div className="grid grid-cols-1 gap-5 sm:gap-6">
-              <AttirePaletteGroup
-                label="Ladies"
-                colors={attireGuide.entourage.ladies.colors}
-                description={attireGuide.entourage.ladies.description}
-              />
-              <AttirePaletteGroup
+            <div className="w-full space-y-6 sm:space-y-8">
+              <AttireSectionHeading title={siteConfig.dressCode.guests.title} />
+              <AttireRoleCard
                 label="Gentlemen"
-                colors={attireGuide.entourage.gentlemen.colors}
-                description={attireGuide.entourage.gentlemen.description}
+                description={siteConfig.dressCode.guests.gentlemen.description}
+                image={siteConfig.dressCode.guests.gentlemen.image}
+                alt="Gentlemen formal attire color collage"
+              />
+              <AttireRoleCard
+                label="Ladies"
+                description={siteConfig.dressCode.guests.ladies.description}
+                image={siteConfig.dressCode.guests.ladies.image}
+                alt="Ladies formal attire color collage"
               />
             </div>
-          </AttireCard>
+          </div>
 
-          <AttireCard
-            title="Guests"
-            image={attireGuide.guests.image}
-            imageAspect={attireGuide.guests.imageAspect}
-            alt="Guests attire guide"
-          >
-            <div className="grid grid-cols-1 gap-5 sm:gap-6">
-              <AttirePaletteGroup
-                label="Ladies"
-                colors={attireGuide.guests.ladies.colors}
-                description={attireGuide.guests.ladies.description}
-              />
-              <AttirePaletteGroup
-                label="Gentlemen"
-                colors={attireGuide.guests.gentlemen.colors}
-                description={attireGuide.guests.gentlemen.description}
-              />
-            </div>
-          </AttireCard>
+          <AttirePaletteNote
+            paletteNote={siteConfig.dressCode.paletteNote}
+            closing={siteConfig.dressCode.closing}
+          />
         </div>
 
         {/* <div
@@ -1012,14 +1018,11 @@ export function Details() {
                 </ReminderCard>
 
                 <ReminderCard title="Strictly Formal" variant="accent">
-                  <div className="space-y-2.5">
-                    <p>
-                      Kindly follow our suggested attire and color palette above to match our wedding
-                      theme.
-                    </p>
-                    <ColorPalette colors={dressCodeColors} />
-                    <p>Strictly no casual clothes, shoes, or white-colored attire.</p>
-                  </div>
+                  <p>
+                    Kindly follow our suggested attire guidelines above. Please refrain from
+                    wearing white, ivory, champagne, and shades of red, as these colors are
+                    reserved for the bride and entourage.
+                  </p>
                 </ReminderCard>
 
                 <ReminderCard title="Arrival">

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, type CSSProperties } from "react"
+import { createPortal } from "react-dom"
 import {
   Search,
   CheckCircle,
@@ -147,6 +148,11 @@ export function GuestList() {
   })
 
   const searchRef = useRef<HTMLDivElement>(null)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Update companions array based on allowedGuests when a guest is selected
   useEffect(() => {
@@ -565,7 +571,9 @@ export function GuestList() {
                   >
                     {filteredGuests.map((guest, index) => (
                       <button
-                        key={index}
+                        key={guest.id ?? index}
+                        type="button"
+                        onMouseDown={(e) => e.preventDefault()}
                         onClick={() => handleSearchSelect(guest)}
                         className="w-full px-2.5 sm:px-3 py-2 sm:py-2.5 text-left hover:bg-motif-cream/40 active:bg-motif-deep/40 transition-all duration-200 flex items-center gap-2 sm:gap-3 border-b border-motif-deep/40 last:border-b-0 group"
                       >
@@ -610,7 +618,7 @@ export function GuestList() {
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-xs sm:text-sm text-motif-deep mb-1">Not finding your name?</h4>
-                          <p className={`${sectionType.label} text-motif-medium leading-relaxed`}>
+                          <p className={`${sectionType.label} text-motif-deep leading-relaxed`}>
                             We'd love to have you with us! Send a request to join the celebration.
                           </p>
                         </div>
@@ -634,10 +642,10 @@ export function GuestList() {
         </div>
       </div>
 
-      {/* RSVP Modal */}
-      {showModal && (
+      {/* RSVP Modal — portaled to escape motion/filter stacking context */}
+      {isMounted && showModal && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-1 backdrop-blur-sm animate-in fade-in sm:p-2 md:p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-1 backdrop-blur-sm animate-in fade-in sm:p-2 md:p-4"
           onClick={handleCloseModal}
         >
           <div
@@ -691,9 +699,9 @@ export function GuestList() {
                 </span>
                 <span
                   aria-hidden
-                  className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88]`}
+                  className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] mt-2 sm:mt-3 md:mt-4`}
                   style={{
-                    marginTop: "var(--script-overlap)",
+                    marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
                     fontSize: "var(--script-size)",
                     color: palette.accent,
                     textShadow:
@@ -1065,11 +1073,12 @@ export function GuestList() {
                 </div>
               )}
             </div>
-          </div>
-        )}
+          </div>,
+        document.body
+      )}
 
         {/* RSVP Success — rendered outside RSVP modal to escape transform stacking context */}
-        {success && (
+        {isMounted && success && createPortal(
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-5 backdrop-blur-md animate-in fade-in duration-200 sm:p-8">
             <div className="w-full max-w-sm animate-in zoom-in-95 duration-200">
               <div className="overflow-hidden rounded-2xl" style={modalCardStyle}>
@@ -1170,13 +1179,14 @@ export function GuestList() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </div>,
+        document.body
+      )}
 
         {/* Request to Join Modal */}
-        {showRequestModal && (
+        {isMounted && showRequestModal && createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-1 backdrop-blur-sm animate-in fade-in sm:p-2 md:p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-1 backdrop-blur-sm animate-in fade-in sm:p-2 md:p-4"
             onClick={handleCloseRequestModal}
           >
             <div
@@ -1227,9 +1237,9 @@ export function GuestList() {
                   </span>
                   <span
                     aria-hidden
-                    className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88]`}
+                    className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] mt-2 sm:mt-3 md:mt-4`}
                     style={{
-                      marginTop: "var(--script-overlap)",
+                      marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
                       fontSize: "var(--script-size)",
                       color: palette.accent,
                       textShadow:
@@ -1436,8 +1446,9 @@ export function GuestList() {
                 </div>
               )}
             </div>
-          </div>
-        )}
+          </div>,
+        document.body
+      )}
 
       {/* Floating Status Messages (outside modals) */}
       {success && !showModal && !showRequestModal && !requestSuccess && (

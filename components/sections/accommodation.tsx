@@ -1,458 +1,574 @@
 "use client"
 
-import {
-  Building2,
-  Car,
-  ExternalLink,
-  Headset,
-  Phone,
-  Sparkles,
-} from "lucide-react"
+import type React from "react"
+import { motion } from "motion/react"
 import { Cinzel } from "next/font/google"
-import { Section } from "@/components/section"
-import { useSiteConfig } from "@/hooks/use-site-config"
-import {
-  coastalCardShadow,
-  coastalPalette,
-  displayScript,
-} from "@/lib/coastal-palette"
+import localFont from "next/font/local"
+import { layeredSectionTitleSize, sectionType } from "@/lib/section-typography"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
 })
 
-const CORNER_DECO_CLASS =
-  "block h-auto w-auto max-w-[100px] sm:max-w-[140px] md:max-w-[200px] lg:max-w-[240px] opacity-70"
+const theSeasons = localFont({
+  src: "../../Font/Fontspring-DEMO-theseasons-reg.otf",
+  display: "swap",
+  variable: "--font-the-seasons",
+})
 
-const BLUE_SHELL_FILTER =
-  `brightness(0) saturate(100%) invert(58%) sepia(18%) saturate(612%) hue-rotate(152deg) brightness(95%) contrast(88%) drop-shadow(0 4px 14px color-mix(in srgb, ${coastalPalette.blueGray} 55%, transparent))`
-
-const OUTSIDE_TEXT = coastalPalette.cream
-const OUTSIDE_TEXT_MUTED = "rgba(255, 252, 248, 0.94)"
-const OUTSIDE_LABEL = "rgba(255, 252, 248, 0.82)"
-const OUTSIDE_TITLE_SHADOW =
-  "0 2px 8px rgba(45, 67, 79, 0.35), 0 0 20px rgba(45, 67, 79, 0.15)"
+const aboveTheBeyond = localFont({
+  src: "../../Font/above-the-beyond-script.otf",
+  display: "swap",
+  variable: "--font-above-beyond",
+})
 
 const palette = {
-  heading: `color-mix(in srgb, ${coastalPalette.deep} 85%, #2A383B)`,
-  body: `color-mix(in srgb, ${coastalPalette.body} 90%, #243033)`,
-  label: `color-mix(in srgb, ${coastalPalette.dustyRose} 70%, ${coastalPalette.deep})`,
-  accent: `color-mix(in srgb, ${coastalPalette.teal} 75%, ${coastalPalette.deep})`,
-  discount: `color-mix(in srgb, ${coastalPalette.title} 80%, ${coastalPalette.deep})`,
-  onAccent: coastalPalette.cream,
-  divider: `color-mix(in srgb, ${coastalPalette.blueGray} 55%, white)`,
-} as const
-
-const bodyFont: React.CSSProperties = {
-  fontFamily: "'SortsMillGoudy', Georgia, serif",
-}
-
-const ct = {
-  label: "text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.18em]",
-  body: "text-sm sm:text-base leading-relaxed",
-  bodyLg: "text-base sm:text-lg leading-relaxed",
-} as const
-
-const glassPanelStyle = {
-  backgroundColor: `color-mix(in srgb, ${coastalPalette.cream} 42%, transparent)`,
-  borderColor: "rgba(255, 255, 255, 0.62)",
-  boxShadow: `0 28px 72px color-mix(in srgb, ${coastalPalette.teal} 10%, transparent), 0 12px 32px color-mix(in srgb, ${coastalPalette.blueGray} 16%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.82)`,
-} as const
-
-const glassAmbientGlowStyle = {
-  background: `linear-gradient(135deg, color-mix(in srgb, ${coastalPalette.blueGray} 32%, transparent) 0%, color-mix(in srgb, ${coastalPalette.dustyRose} 22%, transparent) 48%, color-mix(in srgb, ${coastalPalette.teal} 18%, transparent) 100%)`,
+  body: "var(--color-welcome-text)",
+  heading: "var(--color-welcome-navy)",
+  label: "var(--color-welcome-heading)",
+  accent: "var(--color-welcome-green)",
 } as const
 
 const cardStyle = {
-  backgroundColor: `color-mix(in srgb, ${coastalPalette.cream} 78%, white)`,
-  borderColor: `color-mix(in srgb, ${coastalPalette.blueGray} 42%, white)`,
-  boxShadow: coastalCardShadow,
+  background: "var(--color-welcome-bg)",
+  borderColor: "color-mix(in srgb, var(--color-motif-deep) 14%, transparent)",
+  boxShadow:
+    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
 } as const
 
-const cardWashStyle = {
-  background: `linear-gradient(
-    145deg,
-    color-mix(in srgb, ${coastalPalette.peach} 22%, transparent) 0%,
-    color-mix(in srgb, ${coastalPalette.lavenderBlue} 28%, transparent) 52%,
-    color-mix(in srgb, ${coastalPalette.blueGray} 14%, transparent) 100%
-  )`,
+const softPanelStyle = {
+  background: "var(--color-welcome-bg-soft)",
+  borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)",
 } as const
 
-const pillBase =
-  "inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+const accentPanelStyle = {
+  background:
+    "linear-gradient(135deg, color-mix(in srgb, var(--color-welcome-green) 8%, var(--color-welcome-bg-soft)) 0%, var(--color-welcome-bg-soft) 100%)",
+  borderColor: "color-mix(in srgb, var(--color-welcome-green) 22%, transparent)",
+} as const
 
-function formatPhoneHref(phone: string) {
-  return `tel:${phone.replace(/\s/g, "")}`
+const linkClass =
+  "font-semibold underline underline-offset-[3px] decoration-current/40 transition-opacity hover:opacity-80"
+
+const sections = [
+  { step: "01", title: "Arrival in Manila" },
+  { step: "02", title: "Getting Around" },
+  { step: "03", title: "Accommodation" },
+  { step: "04", title: "Our Favorites" },
+] as const
+
+const nearbyHotels = [
+  "Ascott Bonifacio Global City Manila",
+  "F1 Hotel Manila",
+  "Seda BGC (Seda Bonifacio Global City)",
+] as const
+
+const favoriteCategories = [
+  {
+    title: "Cafés",
+    spots: [
+      {
+        name: "Harlan + Holden",
+        note: "Great coffee, minimalist interiors, and a relaxing atmosphere.",
+      },
+      {
+        name: "Elephant Grounds",
+        note: "A favorite for specialty coffee, pastries, and their famous ice cream sandwiches.",
+      },
+      {
+        name: "Toby's Estate",
+        note: "Excellent coffee and a great spot for breakfast or brunch.",
+      },
+    ],
+  },
+  {
+    title: "Dining",
+    spots: [
+      {
+        name: "Manam",
+        note: "A Filipino favorite serving classic dishes with a modern twist.",
+      },
+      {
+        name: "Fat Seed Café + Roastery",
+        note: "Comfort food, excellent coffee, and an all-day menu that's perfect for any time of day.",
+      },
+      {
+        name: "Wildflour",
+        note: "Best known for their famous cronuts, fresh pastries, and delicious pasta dishes. A perfect spot for brunch or a leisurely meal.",
+      },
+    ],
+  },
+  {
+    title: "Bars & Cocktails",
+    spots: [
+      {
+        name: "The Back Room",
+        note: "Elegant cocktails in a glamorous Art Deco-inspired setting.",
+      },
+      {
+        name: "Dr. Wine",
+        note: "A cozy wine bar with an extensive selection of wines and delicious small plates.",
+      },
+      {
+        name: "Agave Mexican Cantina",
+        note: "Drop by during Happy Hour for their unlimited margaritas, then stay for the tacos, nachos, and lively atmosphere.",
+      },
+    ],
+  },
+  {
+    title: "Shopping",
+    spots: [
+      {
+        name: "Bonifacio High Street",
+        note: "Stroll along the open-air shopping strip filled with boutiques, restaurants, cafés, and green spaces.",
+      },
+      {
+        name: "Mitsukoshi BGC",
+        note: "A Japanese-inspired shopping destination with unique stores, specialty groceries, and excellent dining options.",
+      },
+      {
+        name: "Market! Market!",
+        note: "If you enjoy treasure hunting, this is the place! Browse local food stalls, pick up affordable clothing and souvenirs, and experience one of Manila's liveliest shopping spots.",
+      },
+    ],
+  },
+] as const
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 14 },
+  show: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay, ease: [0.22, 0.61, 0.36, 1] as const },
+  }),
 }
 
-function OrnamentalRule({ light = false }: { light?: boolean }) {
-  const line = light
-    ? "bg-white/55"
-    : `color-mix(in srgb, ${coastalPalette.blueGray} 65%, white)`
-
+function OrnamentalDivider({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="flex items-center justify-center gap-3 pt-2 sm:pt-3">
+    <div className={`flex items-center justify-center ${compact ? "gap-1.5" : "gap-2"}`}>
       <span
-        className={`h-px w-10 sm:w-14 ${light ? "bg-white/55" : ""}`}
-        style={light ? undefined : { backgroundColor: line as string }}
-      />
-      <span
-        className="h-1.5 w-1.5 rotate-45 rounded-[1px]"
+        className={`h-px ${compact ? "w-6 sm:w-10" : "w-8 sm:w-12"}`}
         style={{
-          backgroundColor: light
-            ? "rgba(255, 252, 248, 0.75)"
-            : `color-mix(in srgb, ${coastalPalette.dustyRose} 70%, white)`,
+          background:
+            "linear-gradient(to right, transparent, color-mix(in srgb, var(--color-motif-deep) 38%, transparent))",
         }}
       />
+      <span className="h-0.5 w-0.5 rounded-full bg-motif-deep/45 sm:h-1 sm:w-1" aria-hidden />
       <span
-        className={`h-px w-10 sm:w-14 ${light ? "bg-white/55" : ""}`}
-        style={light ? undefined : { backgroundColor: line as string }}
+        className={`h-px ${compact ? "w-6 sm:w-10" : "w-8 sm:w-12"}`}
+        style={{
+          background:
+            "linear-gradient(to left, transparent, color-mix(in srgb, var(--color-motif-deep) 38%, transparent))",
+        }}
       />
     </div>
   )
 }
 
-function CardSurface({
+function TravelLabel() {
+  const lineStyle = {
+    background:
+      "linear-gradient(to right, transparent, color-mix(in srgb, var(--color-welcome-navy) 35%, transparent))",
+  }
+
+  return (
+    <div className="flex items-center justify-center gap-2.5 pt-1 sm:gap-3.5 sm:pt-1.5">
+      <span className="h-px w-5 sm:w-7 md:w-9" style={lineStyle} aria-hidden />
+      <p
+        className={`${cinzel.className} ${sectionType.label} shrink-0 py-0.5 font-semibold uppercase leading-normal tracking-[0.28em] min-[400px]:tracking-[0.32em] sm:tracking-[0.38em]`}
+        style={{ color: palette.heading }}
+      >
+        For Our Guests Abroad
+      </p>
+      <span
+        className="h-px w-5 sm:w-7 md:w-9"
+        style={{
+          background:
+            "linear-gradient(to left, transparent, color-mix(in srgb, var(--color-welcome-navy) 35%, transparent))",
+        }}
+        aria-hidden
+      />
+    </div>
+  )
+}
+
+function AccommodationTitle() {
+  return (
+    <h2
+      className="welcome-title-lockup relative mx-auto w-full max-w-full text-center"
+      style={
+        {
+          "--title-size": layeredSectionTitleSize.main,
+          "--script-size": layeredSectionTitleSize.script,
+          "--script-overlap": layeredSectionTitleSize.overlap,
+        } as React.CSSProperties
+      }
+    >
+      <span
+        className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.13em] md:tracking-[0.14em]`}
+        style={{
+          fontSize: "var(--title-size)",
+          color: palette.heading,
+        }}
+      >
+        Accommodation and Travel
+      </span>
+      <span
+        aria-hidden
+        className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
+        style={{
+          marginTop: "var(--script-overlap)",
+          fontSize: "var(--script-size)",
+          color: palette.accent,
+          textShadow:
+            "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 95%, white), 0 0 10px color-mix(in srgb, var(--color-welcome-bg) 65%, white)",
+        }}
+      >
+        plan your visit to Manila
+      </span>
+      <span className="sr-only">plan your visit to Manila</span>
+    </h2>
+  )
+}
+
+function SoftPanel({
   children,
   className = "",
-  hover = false,
+  variant = "default",
 }: {
   children: React.ReactNode
   className?: string
-  hover?: boolean
+  variant?: "default" | "accent"
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border backdrop-blur-md sm:rounded-2xl ${
-        hover ? "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" : ""
-      } ${className}`}
-      style={cardStyle}
+      className={`rounded-md border px-4 py-3.5 sm:rounded-lg sm:px-5 sm:py-4 ${className}`}
+      style={variant === "accent" ? accentPanelStyle : softPanelStyle}
     >
-      <div
-        className="pointer-events-none absolute inset-0 rounded-xl sm:rounded-2xl"
-        style={cardWashStyle}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/60 sm:rounded-2xl"
-        aria-hidden
-      />
-      <div className="relative z-10">{children}</div>
+      {children}
     </div>
   )
 }
 
-function FacebookPill({ href }: { href: string }) {
+function SectionHeading({ step, title }: { step: string; title: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={pillBase}
-      style={{
-        ...bodyFont,
-        color: palette.accent,
-        backgroundColor: `color-mix(in srgb, ${coastalPalette.lavenderBlue} 55%, white)`,
-        border: `1px solid color-mix(in srgb, ${coastalPalette.blueGray} 40%, white)`,
-        outlineColor: palette.accent,
-      }}
-    >
-      <ExternalLink size={15} aria-hidden />
-      Facebook
-    </a>
+    <header className="mb-5 sm:mb-6 md:mb-7">
+      <div className="flex items-baseline gap-3 sm:gap-3.5">
+        <span
+          className={`${cinzel.className} ${sectionType.label} shrink-0 font-semibold tabular-nums tracking-[0.12em]`}
+          style={{ color: palette.accent }}
+        >
+          {step}
+        </span>
+        <h3
+          className={`${theSeasons.className} text-lg font-semibold uppercase leading-tight tracking-[0.1em] sm:text-xl md:text-2xl md:tracking-[0.12em]`}
+          style={{ color: palette.heading }}
+        >
+          {title}
+        </h3>
+      </div>
+      <div
+        className="mt-3 h-px w-full max-w-[10rem] sm:mt-4 sm:max-w-[12rem]"
+        style={{
+          background:
+            "linear-gradient(to right, color-mix(in srgb, var(--color-welcome-green) 55%, transparent), transparent)",
+        }}
+        aria-hidden
+      />
+    </header>
   )
 }
 
-function PhonePill({ phone }: { phone: string }) {
+function SectionBlock({
+  step,
+  title,
+  children,
+  index,
+}: {
+  step: string
+  title: string
+  children: React.ReactNode
+  index: number
+}) {
   return (
-    <a
-      href={formatPhoneHref(phone)}
-      className={pillBase}
-      style={{
-        ...bodyFont,
-        color: palette.onAccent,
-        backgroundColor: palette.accent,
-        outlineColor: palette.accent,
-      }}
+    <motion.article
+      custom={index * 0.08}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-30px" }}
+      variants={fadeUp}
     >
-      <Phone size={15} aria-hidden />
-      {phone}
-    </a>
+      <SectionHeading step={step} title={title} />
+      <div
+        className={`font-goudy-italic space-y-3 sm:space-y-3.5 md:space-y-4 ${sectionType.textRelaxed}`}
+        style={{ color: palette.body }}
+      >
+        {children}
+      </div>
+    </motion.article>
+  )
+}
+
+function SectionDivider() {
+  return (
+    <div className="py-6 sm:py-7 md:py-8">
+      <OrnamentalDivider compact />
+    </div>
+  )
+}
+
+function ETravelCallout() {
+  return (
+    <SoftPanel variant="accent">
+      <p
+        className={`${cinzel.className} ${sectionType.label} mb-2 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em]`}
+        style={{ color: palette.label }}
+      >
+        Required before arrival
+      </p>
+      <p className={`font-goudy-italic ${sectionType.textSnug}`} style={{ color: palette.body }}>
+        Register via{" "}
+        <a
+          href="https://etravel.gov.ph/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+          style={{ color: palette.accent }}
+        >
+          etravel.gov.ph
+        </a>{" "}
+        or the eGovPH app.
+      </p>
+    </SoftPanel>
+  )
+}
+
+function AddressBlock() {
+  return (
+    <SoftPanel>
+      <p
+        className={`${cinzel.className} ${sectionType.label} mb-2 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em]`}
+        style={{ color: palette.label }}
+      >
+        Grab destination
+      </p>
+      <p
+        className={`${cinzel.className} ${sectionType.subheader} font-semibold leading-snug`}
+        style={{ color: palette.heading }}
+      >
+        Shangri-La The Fort, Manila
+      </p>
+      <p className="mt-2 font-goudy-italic leading-relaxed" style={{ color: palette.body }}>
+        30th Street corner 5th Avenue
+        <br />
+        Bonifacio Global City (BGC)
+        <br />
+        Taguig, Metro Manila
+      </p>
+      <p
+        className={`font-goudy-italic mt-3 border-t pt-3 italic ${sectionType.textSnug}`}
+        style={{
+          color: palette.body,
+          borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)",
+        }}
+      >
+        Depending on traffic, the journey from NAIA typically takes 30–60 minutes.
+      </p>
+    </SoftPanel>
+  )
+}
+
+function PrimaryVenuePanel() {
+  return (
+    <SoftPanel variant="accent">
+      <p
+        className={`${cinzel.className} ${sectionType.label} mb-2 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em]`}
+        style={{ color: palette.label }}
+      >
+        Reception venue &amp; recommended stay
+      </p>
+      <p
+        className={`${cinzel.className} ${sectionType.subheader} font-semibold leading-snug`}
+        style={{ color: palette.heading }}
+      >
+        Shangri-La The Fort, Manila
+      </p>
+      <p className={`font-goudy-italic mt-2 ${sectionType.textSnug}`} style={{ color: palette.body }}>
+        We&apos;d love for you to stay here if it&apos;s convenient. Book early — availability may
+        be limited.
+      </p>
+    </SoftPanel>
+  )
+}
+
+function FavoriteSpot({ name, note }: { name: string; note: string }) {
+  return (
+    <li className="leading-[1.65]">
+      <span className={`${cinzel.className} font-semibold`} style={{ color: palette.heading }}>
+        {name}
+      </span>
+      <span style={{ color: palette.body }}> — {note}</span>
+    </li>
   )
 }
 
 export function Accommodation() {
-  const siteConfig = useSiteConfig()
-  const { accommodation } = siteConfig
-
   return (
-    <Section
+    <section
       id="accommodation"
-      className="relative isolate overflow-hidden bg-transparent pt-8 pb-8 sm:pt-10 sm:pb-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-14"
+      className={`${theSeasons.variable} ${aboveTheBeyond.variable} relative px-3 py-5 sm:px-5 sm:py-7 md:px-6 md:py-9`}
     >
-      {/* Shell corner decorations */}
-      <div className="pointer-events-none absolute left-0 top-0 z-[1]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/decoration/top-left-shell-deco.png"
-          alt=""
-          className={CORNER_DECO_CLASS}
-          style={{ filter: BLUE_SHELL_FILTER }}
-        />
-      </div>
-      <div className="pointer-events-none absolute bottom-0 right-0 z-[1]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/decoration/right-bottom-shell-deco.png"
-          alt=""
-          className={CORNER_DECO_CLASS}
-          style={{ filter: BLUE_SHELL_FILTER }}
-        />
-      </div>
+      <div className="relative mx-auto w-full max-w-xl sm:max-w-2xl md:max-w-3xl">
+        <motion.article
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
+          className="relative min-w-0 overflow-visible rounded-lg border px-4 pt-6 pb-10 @container/accommodation sm:rounded-xl sm:px-7 sm:pt-7 sm:pb-12 md:rounded-2xl md:px-8 md:pt-8 md:pb-14"
+          style={cardStyle}
+        >
+          <div className="wedding-frame-inner hidden min-[400px]:block" aria-hidden />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 md:px-8">
-        {/* Header */}
-        <div className="mb-6 text-center sm:mb-8 md:mb-10">
-          <p
-            className={`${cinzel.className} ${ct.label} mb-2 uppercase`}
-            style={{ color: OUTSIDE_LABEL }}
-          >
-            Where to Stay
-          </p>
-          <h2
-            className="mx-auto my-4 leading-[1.08] sm:my-5 md:my-6"
-            style={{
-              ...displayScript,
-              fontSize: "clamp(2rem, 6.5vw, 4.25rem)",
-              color: OUTSIDE_TEXT,
-              letterSpacing: "0.02em",
-              textShadow: OUTSIDE_TITLE_SHADOW,
-            }}
-          >
-            Hotel &amp; Accommodation
-          </h2>
-          <p
-            className={`${ct.bodyLg} mx-auto max-w-2xl px-2`}
-            style={{ ...bodyFont, color: OUTSIDE_TEXT_MUTED }}
-          >
-            Here are our recommended hotels and accommodations within the area.
-            Let them know that you are our wedding guest to avail their generous
-            discount offers, or coordinate with our accommodation coordinator.
-          </p>
-          <OrnamentalRule light />
-        </div>
-
-        {/* Main glass panel */}
-        <div className="relative">
           <div
-            className="pointer-events-none absolute -inset-1 rounded-2xl opacity-50 blur-2xl sm:-inset-2"
-            style={glassAmbientGlowStyle}
             aria-hidden
+            className="pointer-events-none absolute inset-x-5 top-0 h-px sm:inset-x-8"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, var(--color-motif-yellow), transparent)",
+            }}
           />
-          <div
-            className="relative overflow-hidden rounded-xl border backdrop-blur-xl sm:rounded-2xl sm:backdrop-blur-2xl"
-            style={glassPanelStyle}
-          >
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/35 sm:rounded-2xl"
-              aria-hidden
-            />
 
-            <div className="relative z-10 space-y-4 p-3 sm:space-y-5 sm:p-4 md:p-5">
-              {/* Coordinator — featured */}
-              <CardSurface className="overflow-hidden">
-                <div
-                  className="h-1 w-full"
-                  style={{
-                    background: `linear-gradient(90deg, ${coastalPalette.peach}, ${coastalPalette.dustyRose}, ${coastalPalette.teal})`,
-                  }}
-                  aria-hidden
-                />
-                <div className="flex flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6 md:px-7">
-                  <div className="flex gap-3.5 sm:gap-4">
-                    <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full sm:h-12 sm:w-12"
-                      style={{
-                        backgroundColor: `color-mix(in srgb, ${coastalPalette.teal} 18%, white)`,
-                        color: palette.accent,
-                        border: `1px solid color-mix(in srgb, ${coastalPalette.teal} 28%, white)`,
-                      }}
-                    >
-                      <Headset size={22} aria-hidden />
-                    </div>
-                    <div>
-                      <p
-                        className={`${cinzel.className} ${ct.label} font-semibold uppercase`}
-                        style={{ color: palette.label }}
-                      >
-                        Accommodation Coordinator
-                      </p>
-                      <p
-                        className={`${cinzel.className} mt-1 text-base font-semibold sm:text-lg`}
-                        style={{ color: palette.heading }}
-                      >
-                        {accommodation.coordinator.name}
-                      </p>
-                      <p
-                        className={`${ct.body} mt-1.5 max-w-md`}
-                        style={{ ...bodyFont, color: palette.body }}
-                      >
-                        Reach out for help booking rooms or applying guest discounts.
-                      </p>
-                    </div>
-                  </div>
-                  <PhonePill phone={accommodation.coordinator.phone} />
-                </div>
-              </CardSurface>
-
-              {/* Hotels list */}
-              <ol className="space-y-3 sm:space-y-3.5">
-                {accommodation.hotels.map((hotel, index) => (
-                  <li key={hotel.name}>
-                    <CardSurface hover className="px-4 py-4 sm:px-5 sm:py-5 md:px-6">
-                      <div className="flex gap-3.5 sm:gap-4">
-                        <div className="flex shrink-0 flex-col items-center gap-2">
-                          <span
-                            className={`${cinzel.className} flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold sm:h-9 sm:w-9`}
-                            style={{
-                              backgroundColor: palette.accent,
-                              color: palette.onAccent,
-                            }}
-                            aria-hidden
-                          >
-                            {index + 1}
-                          </span>
-                          <Building2
-                            size={18}
-                            className="hidden opacity-40 sm:block"
-                            style={{ color: palette.accent }}
-                            aria-hidden
-                          />
-                        </div>
-
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-start justify-between gap-2">
-                            <h3
-                              className={`${cinzel.className} text-base font-semibold tracking-wide sm:text-lg md:text-xl`}
-                              style={{ color: palette.heading }}
-                            >
-                              {hotel.name}
-                            </h3>
-                            {hotel.discount && (
-                              <span
-                                className={`${cinzel.className} inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] sm:text-xs`}
-                                style={{
-                                  color: palette.discount,
-                                  backgroundColor: `color-mix(in srgb, ${coastalPalette.peach} 45%, white)`,
-                                  border: `1px solid color-mix(in srgb, ${coastalPalette.dustyRose} 35%, white)`,
-                                }}
-                              >
-                                <Sparkles size={12} aria-hidden />
-                                Guest discount
-                              </span>
-                            )}
-                          </div>
-
-                          {hotel.discount && (
-                            <p
-                              className={`${ct.body} mt-2.5 rounded-lg px-3 py-2.5 sm:mt-3`}
-                              style={{
-                                ...bodyFont,
-                                color: palette.body,
-                                backgroundColor: `color-mix(in srgb, ${coastalPalette.lavenderBlue} 48%, white)`,
-                                border: `1px solid color-mix(in srgb, ${coastalPalette.blueGray} 35%, white)`,
-                              }}
-                            >
-                              {hotel.discount}
-                            </p>
-                          )}
-
-                          {(hotel.phone || ("facebook" in hotel && hotel.facebook)) && (
-                            <div
-                              className="mt-3 flex flex-wrap items-center gap-2 border-t pt-3 sm:mt-3.5 sm:gap-2.5 sm:pt-3.5"
-                              style={{ borderColor: palette.divider }}
-                            >
-                              {hotel.phone && <PhonePill phone={hotel.phone} />}
-                              {"facebook" in hotel && hotel.facebook && (
-                                <FacebookPill href={hotel.facebook} />
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </CardSurface>
-                  </li>
-                ))}
-              </ol>
+          {/* Header */}
+          <header className="relative space-y-3 px-1 pt-4 pb-2 text-center sm:space-y-3.5 sm:px-2 sm:pt-5 sm:pb-3 md:space-y-4 md:pt-6 md:pb-4">
+            <TravelLabel />
+            <AccommodationTitle />
+            <p
+              className={`font-goudy-italic mx-auto max-w-lg px-1 pt-1 sm:px-2 sm:pt-2 ${sectionType.textRelaxed}`}
+              style={{ color: palette.body }}
+            >
+              We&apos;re so excited to celebrate with you! For our family and friends traveling from
+              overseas, we&apos;ve put together a few tips to help make your trip to Manila as smooth
+              as possible.
+            </p>
+            <div className="pt-2 sm:pt-2.5">
+              <OrnamentalDivider compact />
             </div>
-          </div>
-        </div>
+          </header>
 
-        {/* Car rentals */}
-        {accommodation.carRentals.length > 0 && (
-          <div className="relative mt-10 sm:mt-12 md:mt-14">
-            <div className="mb-5 text-center sm:mb-6 md:mb-8">
-              <p
-                className={`${cinzel.className} ${ct.label} mb-2 uppercase`}
-                style={{ color: OUTSIDE_LABEL }}
-              >
-                Getting Around
+          {/* Content */}
+          <div className="relative mx-4 pt-6 sm:mx-6 sm:pt-8 md:mx-7 md:pt-10">
+            <SectionBlock step={sections[0].step} title={sections[0].title} index={0}>
+              <p>
+                If you&apos;re flying into the Philippines, you&apos;ll most likely arrive at Ninoy
+                Aquino International Airport (NAIA).
               </p>
-              <h3
-                className={`${cinzel.className} text-xl font-semibold tracking-wide sm:text-2xl md:text-3xl`}
-                style={{ color: OUTSIDE_TEXT, textShadow: OUTSIDE_TITLE_SHADOW }}
-              >
-                Recommended Car Rental
-              </h3>
-              <OrnamentalRule light />
-            </div>
+              <p>
+                Before your flight, please complete the Philippines&apos; eTravel registration, which
+                is required for arriving passengers. You can do this online within the required
+                timeframe before your arrival.
+              </p>
+              <ETravelCallout />
+            </SectionBlock>
 
-            <div className="relative">
-              <div
-                className="pointer-events-none absolute -inset-1 rounded-2xl opacity-40 blur-2xl"
-                style={glassAmbientGlowStyle}
-                aria-hidden
-              />
-              <ul className="relative space-y-3 sm:space-y-3.5">
-                {accommodation.carRentals.map((rental) => (
-                  <li key={rental.name}>
-                    <CardSurface hover className="px-4 py-4 sm:px-5 sm:py-5 md:px-6">
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <div
-                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full sm:h-11 sm:w-11"
-                          style={{
-                            backgroundColor: `color-mix(in srgb, ${coastalPalette.blueGray} 28%, white)`,
-                            color: palette.accent,
-                            border: `1px solid color-mix(in srgb, ${coastalPalette.blueGray} 45%, white)`,
-                          }}
-                        >
-                          <Car size={20} aria-hidden />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <h4
-                            className={`${cinzel.className} text-base font-semibold tracking-wide sm:text-lg md:text-xl`}
-                            style={{ color: palette.heading }}
-                          >
-                            {rental.name}
-                          </h4>
-                          <div className="mt-2.5">
-                            <FacebookPill href={rental.facebook} />
-                          </div>
-                        </div>
-                      </div>
-                    </CardSurface>
+            <SectionDivider />
+
+            <SectionBlock step={sections[1].step} title={sections[1].title} index={1}>
+              <p>
+                We recommend downloading Grab, Southeast Asia&apos;s equivalent of Uber, before your
+                trip. It&apos;s the easiest and most reliable way to get around Manila, including
+                airport transfers.
+              </p>
+              <p>
+                Once you&apos;ve landed, connected to Wi-Fi or mobile data, and collected your
+                luggage, simply book a Grab ride to:
+              </p>
+              <AddressBlock />
+            </SectionBlock>
+
+            <SectionDivider />
+
+            <SectionBlock step={sections[2].step} title={sections[2].title} index={2}>
+              <p>
+                Our reception will be held at Shangri-La The Fort, Manila. If you&apos;d like to book
+                a room at the hotel, we recommend making your reservation early.
+              </p>
+              <PrimaryVenuePanel />
+              <p>
+                If you prefer to stay nearby, here are a few hotels in Bonifacio Global City that
+                are just a short walk or drive from the venue:
+              </p>
+              <ul className="list-none space-y-2 pl-0">
+                {nearbyHotels.map((hotel) => (
+                  <li
+                    key={hotel}
+                    className={`${cinzel.className} ${sectionType.subheader} rounded-md border px-4 py-2.5 font-semibold leading-snug sm:rounded-lg sm:px-5 sm:py-3`}
+                    style={{ ...softPanelStyle, color: palette.heading }}
+                  >
+                    {hotel}
                   </li>
                 ))}
               </ul>
-            </div>
+              <p>
+                All of these hotels offer convenient access to the reception venue and are located
+                close to restaurants, cafés, shopping, and other attractions in BGC.
+              </p>
+            </SectionBlock>
+
+            <SectionDivider />
+
+            <SectionBlock step={sections[3].step} title={sections[3].title} index={3}>
+              <p>
+                If you have some free time before or after the celebration, here are a few of our
+                favorite spots around BGC and Makati. We hope you enjoy them as much as we do!
+              </p>
+
+              <div className="grid grid-cols-1 gap-3 pt-1 sm:grid-cols-2 sm:gap-4 sm:pt-2">
+                {favoriteCategories.map(({ title, spots }) => (
+                  <SoftPanel key={title} className="h-full">
+                    <p
+                      className={`${cinzel.className} ${sectionType.label} mb-3 border-b pb-2.5 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em]`}
+                      style={{
+                        color: palette.label,
+                        borderColor: "color-mix(in srgb, var(--color-motif-deep) 10%, transparent)",
+                      }}
+                    >
+                      {title}
+                    </p>
+                    <ul className="list-none space-y-2.5 pl-0">
+                      {spots.map((spot) => (
+                        <FavoriteSpot key={spot.name} name={spot.name} note={spot.note} />
+                      ))}
+                    </ul>
+                  </SoftPanel>
+                ))}
+              </div>
+            </SectionBlock>
+
+            {/* Sign-off */}
+            <footer className="mt-8 space-y-2 px-1 pt-6 text-center sm:mt-10 sm:space-y-2.5 sm:px-2 sm:pt-7 md:mt-12 md:pt-8">
+              <div className="pb-4 sm:pb-5">
+                <OrnamentalDivider compact />
+              </div>
+              <p
+                className={`${aboveTheBeyond.className} ${sectionType.script}`}
+                style={{
+                  color: palette.accent,
+                  textShadow: "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 90%, white)",
+                }}
+              >
+                Safe travels, and see you soon!
+              </p>
+              <p
+                className={`${cinzel.className} ${sectionType.label} font-semibold uppercase tracking-[0.2em] sm:tracking-[0.24em]`}
+                style={{ color: palette.label }}
+              >
+                Bonifacio Global City · Manila
+              </p>
+            </footer>
           </div>
-        )}
+        </motion.article>
       </div>
-    </Section>
+    </section>
   )
 }

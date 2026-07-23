@@ -45,7 +45,7 @@ function OrnamentalDivider() {
 function LoveStoryTitle() {
   return (
     <h1
-      className="welcome-title-lockup relative mx-auto w-full max-w-full text-center"
+      className="welcome-title-lockup relative mx-auto w-full max-w-full text-center mt-8 sm:mt-10 md:mt-12"
       style={
         {
           "--title-size": layeredSectionTitleSize.main,
@@ -55,7 +55,7 @@ function LoveStoryTitle() {
       }
     >
       <span
-        className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.13em] md:tracking-[0.14em]`}
+        className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.13em] md:tracking-[0.14em] mt-4 sm:mt-5 md:mt-6`}
         style={{
           fontSize: "var(--title-size)",
           color: "var(--color-welcome-navy)",
@@ -67,7 +67,7 @@ function LoveStoryTitle() {
         aria-hidden
         className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
         style={{
-          marginTop: "var(--script-overlap)",
+          marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
           fontSize: "var(--script-size)",
           color: "var(--color-welcome-green)",
           textShadow:
@@ -91,7 +91,7 @@ export function LoveStory() {
         <div className="pointer-events-none  absolute right-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-right-corner.png"
+            src="/decoration/top-right-decos.png"
             alt=""
             className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
           />
@@ -99,7 +99,7 @@ export function LoveStory() {
         <div className="pointer-events-none absolute left-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-left-corner.png"
+            src="/decoration/top-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -108,7 +108,7 @@ export function LoveStory() {
           <div className="mx-auto mb-5 sm:mb-6 md:mb-7">
             <OrnamentalDivider />
           </div>
-          <div className="mx-auto mt-2 sm:mt-3 md:mt-4">
+          <div className="mx-auto">
             <LoveStoryTitle />
           </div>
         </div>
@@ -126,7 +126,7 @@ export function LoveStory() {
   layout="image-left"
   isFirst={true}
   title="First Friendly Date"
-  imageSrc="/LoveStory/story one.webp"
+  imageSrc="/LoveStory/loveStory (1).webp"
   text={
     <>
       <p className="mb-4">
@@ -139,7 +139,7 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/LoveStory/story two.webp"
+  imageSrc="/LoveStory/loveStory (2).webp"
   title="When Two Paths Crossed"
   text={
     <>
@@ -153,7 +153,7 @@ export function LoveStory() {
 <StorySection
   theme="light"
   layout="image-left"
-  imageSrc="/LoveStory/story three.webp"
+  imageSrc="/LoveStory/loveStory (3).webp"
   title="An Unexpected Beginning"
   text={
     <>
@@ -167,7 +167,7 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/LoveStory/story four.webp"
+  imageSrc="/LoveStory/loveStory (4).webp"
   title="From Conversations to Connection"
   text={
     <>
@@ -182,7 +182,7 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isLast={true}
-  imageSrc="/LoveStory/story five.webp"
+  imageSrc="/LoveStory/loveStory (5).webp"
   title="When Friendship Became Love"
   text={
     <>
@@ -196,7 +196,7 @@ export function LoveStory() {
 <StorySection
   theme="dark"
   layout="image-right"
-  imageSrc="/LoveStory/story six.webp"
+  imageSrc="/LoveStory/loveStory (6).webp"
   title="Love That Chose to Stay"
   text={
     <>
@@ -211,7 +211,35 @@ export function LoveStory() {
   theme="light"
   layout="image-left"
   isLast={true}
-  imageSrc="/LoveStory/story seven.webp"
+  imageSrc="/LoveStory/loveStory (7).webp"
+  title="Written by Gods Perfect Timing"
+  text={
+    <>
+      <p className="mb-4">
+      With faith in God and complete trust in His plan, they realized that they are totally made for each other and that His timing couldn't be more perfect. A match that was destined before they even met and is destined for the love of a lifetime together as husband and wife. 
+      </p>
+    </>
+  }
+/>
+<StorySection
+  theme="dark"
+  layout="image-right"
+  imageSrc="/LoveStory/loveStory (8).webp"
+  title="Love That Chose to Stay"
+  text={
+    <>
+      <p className="mb-4">
+      They were not supposed to be a couple so their relationship was put to the tests but real love is strong and prevailing. She never judged him from the start and just accepted him as he is. He never doubted her feeling and tendencies, he just loved her for who she is. She made him happy and restored his purpose in life. 
+      </p>
+    </>
+  }
+/>
+
+<StorySection
+  theme="light"
+  layout="image-left"
+  isLast={true}
+  imageSrc="/mobile-background/couples (3).webp"
   title="Written by Gods Perfect Timing"
   text={
     <>
@@ -228,7 +256,7 @@ export function LoveStory() {
         <div className="pointer-events-none absolute bottom-0 left-0 z-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-left-corner.png"
+            src="/decoration/bottom-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -236,7 +264,7 @@ export function LoveStory() {
         <div className="pointer-events-none absolute bottom-0 right-0 z-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/botto-right-corner.png"
+            src="/decoration/bottom-right-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />

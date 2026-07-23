@@ -231,7 +231,7 @@ export function Footer() {
         <div className="pointer-events-none absolute left-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-left-corner.png"
+            src="/decoration/top-left-decos.png"
             alt=""
             className={CORNER_DECO_CLASS}
           />
@@ -239,7 +239,7 @@ export function Footer() {
         <div className="pointer-events-none absolute right-0 top-0 z-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/decoration/decorations/top-right-corner.png"
+            src="/decoration/top-right-decos.png"
             alt=""
             className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
           />
@@ -364,7 +364,7 @@ export function Footer() {
                   className={`${cinzel.className} ${ct.cardTitle} font-semibold mb-3`}
                   style={{ color: palette.heading }}
                 >
-                  Ceremony & Reception
+                  Ceremony
                 </h4>
                 <div className="space-y-3">
                   <DetailRow label="Venue" value={toTitleCase(ceremonyVenue)} />
@@ -375,7 +375,7 @@ export function Footer() {
                 </div>
               </FooterCard>
 
-              {/* <FooterCard>
+              <FooterCard>
                 <h4
                   className={`${cinzel.className} ${ct.cardTitle} font-semibold mb-3`}
                   style={{ color: palette.heading }}
@@ -389,7 +389,7 @@ export function Footer() {
                   )}
                   <DetailRow label="Time" value={receptionTime} />
                 </div>
-              </FooterCard> */}
+              </FooterCard>
 
               <FooterCard>
                 <h4 className={`${cinzel.className} ${ct.cardTitle} font-semibold mb-3`} style={{ color: palette.heading }}>

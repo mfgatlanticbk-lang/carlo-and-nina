@@ -1,6 +1,7 @@
 "use client"
 
 import { Suspense, useState, useCallback, useEffect } from "react"
+import { motion } from "motion/react"
 import dynamic from "next/dynamic"
 import { Hero as MainHero } from "@/components/sections/hero"
 import { Welcome } from "@/components/sections/welcome"
@@ -30,6 +31,55 @@ import { VideoMessage } from "@/components/sections/video-message"
 const Silk = dynamic(() => import("@/components/silk"), { ssr: false })
 const GuestList = dynamic(() => import("@/components/sections/guest-list").then(mod => ({ default: mod.GuestList })), { ssr: false })
 
+const mainEntryEase = [0.22, 1, 0.36, 1] as const
+
+const detailsShellVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { duration: 0.01 },
+  },
+}
+
+const silkBackdropVariants = {
+  hidden: { opacity: 0, scale: 1.08 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.35, ease: mainEntryEase, delay: 0.28 },
+  },
+}
+
+const navbarRevealVariants = {
+  hidden: { opacity: 0, y: -28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.78, ease: mainEntryEase, delay: 0.52 },
+  },
+}
+
+const heroRevealVariants = {
+  hidden: { opacity: 0, y: 52, scale: 1.05, filter: "blur(12px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 1.18, ease: mainEntryEase, delay: 0.4 },
+  },
+}
+
+const sectionsRevealVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1.02, ease: mainEntryEase, delay: 0.68 },
+  },
+}
+
 export default function Home() {
   // Skip loading/landing only when returning from /gallery.
   // The flag is set by the "View Full Gallery" button and cleared immediately
@@ -45,6 +95,8 @@ export default function Home() {
     return AppState.LOADING
   })
   const enableDecor = process.env.NEXT_PUBLIC_ENABLE_DECOR !== 'false'
+  const [showInvitation, setShowInvitation] = useState(false)
+  const [enteringFromInvite, setEnteringFromInvite] = useState(false)
 
   // When returning from /gallery, scroll to the #gallery hash in the URL
   useEffect(() => {
@@ -61,43 +113,104 @@ export default function Home() {
 
   const handleLoadingComplete = useCallback(() => {
     setAppState(AppState.LANDING)
+    setShowInvitation(true)
+  }, [])
+
+  const handleTransitionStart = useCallback(() => {
+    setEnteringFromInvite(true)
+    setAppState(AppState.DETAILS)
+    window.scrollTo({ top: 0, behavior: "instant" })
   }, [])
 
   const handleOpenInvitation = useCallback(() => {
-    setAppState(AppState.DETAILS)
+    setShowInvitation(false)
+    setEnteringFromInvite(false)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }, [])
 
+  const detailsVisible = appState === AppState.DETAILS
+  const pageScrollLocked = appState !== AppState.DETAILS
+  const cinematicEntry = enteringFromInvite && detailsVisible
+
   return (
-      <div className="relative min-h-screen bg-cloud text-charcoal selection:bg-birch selection:text-nut overflow-hidden font-sans">
+      <div className={`relative min-h-screen bg-cloud text-charcoal selection:bg-birch selection:text-nut font-sans ${pageScrollLocked ? "overflow-hidden" : ""}`}>
         {appState === AppState.LOADING && <LoadingScreen onComplete={handleLoadingComplete} />}
 
         <main className="relative w-full h-full">
-          <InvitationHero onOpen={handleOpenInvitation} visible={appState === AppState.LANDING} />
+          {showInvitation && (
+            <InvitationHero
+              onOpen={handleOpenInvitation}
+              onTransitionStart={handleTransitionStart}
+              visible
+            />
+          )}
 
-          <div className={`transition-opacity duration-700 ${appState === AppState.DETAILS ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+          <motion.div
+            className={detailsVisible ? "" : "pointer-events-none"}
+            initial={false}
+            variants={detailsShellVariants}
+            animate={detailsVisible ? "show" : "hidden"}
+          >
+            {cinematicEntry && (
+              <motion.div
+                className="fixed inset-0 z-[28] pointer-events-none bg-[#faf7f1]"
+                aria-hidden="true"
+                initial={{ clipPath: "circle(0% at 50% 38%)", opacity: 0.95 }}
+                animate={{ clipPath: "circle(145% at 50% 38%)", opacity: 0 }}
+                transition={{ duration: 1.45, delay: 0.34, ease: mainEntryEase }}
+              />
+            )}
+
             {enableDecor && (
-              <div className="fixed inset-0 z-0 pointer-events-none">
+              <motion.div
+                className="fixed inset-0 z-0 pointer-events-none"
+                variants={silkBackdropVariants}
+                initial={false}
+                animate={cinematicEntry ? "show" : detailsVisible ? "show" : "hidden"}
+                transition={cinematicEntry ? undefined : { duration: 0.01 }}
+              >
                 <Suspense fallback={<div className="w-full h-full bg-gradient-to-b from-primary/10 to-secondary/5" />}>
-                  <Silk speed={8} scale={0.9} color="#FA9A84" noiseIntensity={0} rotation={0.3} />
+                  <Silk speed={8} scale={0.9} color="#6B1726" noiseIntensity={0} rotation={0.3} />
                 </Suspense>
-              </div>
+              </motion.div>
             )}
 
             <div className="relative z-10">
-              {appState === AppState.DETAILS && <Navbar />}
+              {appState === AppState.DETAILS && (
+                <motion.div
+                  variants={navbarRevealVariants}
+                  initial={false}
+                  animate={cinematicEntry ? "show" : "show"}
+                  transition={cinematicEntry ? undefined : { duration: 0.01 }}
+                >
+                  <Navbar />
+                </motion.div>
+              )}
               {/* Spacer so content starts below fixed navbar (h-12 sm:h-14 md:h-16) */}
               {appState === AppState.DETAILS && <div className="h-12 sm:h-14 md:h-16" aria-hidden />}
-              <MainHero visible={appState === AppState.DETAILS} />
+              <motion.div
+                variants={heroRevealVariants}
+                initial={false}
+                animate={cinematicEntry ? "show" : detailsVisible ? "show" : "hidden"}
+                transition={cinematicEntry ? undefined : { duration: 0.01 }}
+              >
+                <MainHero />
+              </motion.div>
+              <motion.div
+                variants={sectionsRevealVariants}
+                initial={false}
+                animate={cinematicEntry ? "show" : detailsVisible ? "show" : "hidden"}
+                transition={cinematicEntry ? undefined : { duration: 0.01 }}
+              >
               <Welcome />
-               <CoupleVideo /> 
+               {/* <CoupleVideo />  */}
               <LoveStory />
               <Countdown />
               <Gallery />
               <VideoMessage />
               <Messages />
               <Details />
-              {/* <Accommodation /> */}
+              <Accommodation />
               {/* <GuestInformation /> */}
               <WeddingTimeline />
               <Entourage />
@@ -106,13 +219,14 @@ export default function Home() {
       
               {/* <PrincipalSponsors /> */}
               <WeddingPlaylist />
-
+              <FAQ />
               <Registry />
               <SnapShare />
-              <FAQ />
+
               <Footer />
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </main>
       </div>
   )

@@ -83,7 +83,7 @@ function OrnamentalDivider() {
 function FaqTitle() {
   return (
     <h2
-      className="welcome-title-lockup relative mx-auto w-full max-w-full text-center"
+      className="welcome-title-lockup relative mx-auto w-full max-w-full text-center mt-8 sm:mt-10 md:mt-12"
       style={
         {
           "--title-size": layeredSectionTitleSize.main,
@@ -93,7 +93,7 @@ function FaqTitle() {
       }
     >
       <span
-        className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.13em] md:tracking-[0.14em]`}
+        className={`${theSeasons.className} block uppercase leading-[0.78] tracking-[0.08em] min-[400px]:tracking-[0.11em] sm:tracking-[0.13em] md:tracking-[0.14em] mt-4 sm:mt-5 md:mt-6`}
         style={{
           fontSize: "var(--title-size)",
           color: "var(--color-welcome-navy)",
@@ -105,7 +105,7 @@ function FaqTitle() {
         aria-hidden
         className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
         style={{
-          marginTop: "var(--script-overlap)",
+          marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
           fontSize: "var(--script-size)",
           color: "var(--color-welcome-green)",
           textShadow:
@@ -132,10 +132,43 @@ function getFaqItems(siteConfig: SiteConfig): FAQItem[] {
       question: "What time should I arrive for the ceremony?",
       answer: `Our ceremony will begin promptly at ${siteConfig.ceremony.time}. We kindly ask guests to arrive by ${guestArrival} to allow enough time for parking, walking to the ceremony area, and finding your seats so we can begin on time.`,
     },
-    // {
-    //   question: "Where will the ceremony and reception take place?",
-    //   answer: `The ceremony will be held at ${siteConfig.ceremony.location}, ${siteConfig.ceremony.venue} at ${siteConfig.ceremony.time}. The reception will follow at ${siteConfig.reception.location}, ${siteConfig.reception.venue} at ${siteConfig.reception.time}. You can find detailed directions, addresses, and maps in the Event Details section above.`,
-    // },
+    {
+      question: "Where will the ceremony and reception take place?",
+      answer: (
+        <>
+          <p className="mb-4">
+            Our wedding ceremony and reception will be held at two different venues, both
+            conveniently located within Metro Manila.
+          </p>
+          <p
+            className={`${cinzel.className} mb-2 font-semibold`}
+            style={{ color: palette.heading }}
+          >
+            Ceremony
+          </p>
+          <p className="mb-4">
+            Our ceremony will take place at Santuario de San Antonio, one of Manila&apos;s most
+            beautiful churches, located in the charming neighborhood of Forbes Park, Makati.
+          </p>
+          <p
+            className={`${cinzel.className} mb-2 font-semibold`}
+            style={{ color: palette.heading }}
+          >
+            Reception
+          </p>
+          <p className="mb-4">
+            Following the ceremony, we invite you to celebrate with us at Shangri-La The Fort,
+            Manila, located in Bonifacio Global City (BGC), Taguig. Cocktails, dinner, and dancing
+            will all take place here, and we can&apos;t wait to celebrate the evening together with
+            all of you.
+          </p>
+          <p>
+            The drive between the church and the hotel typically takes around 15–30 minutes,
+            depending on traffic.
+          </p>
+        </>
+      ),
+    },
     {
       question: "How do I RSVP?",
       answer: (
@@ -269,7 +302,7 @@ export function FAQ() {
       <div className="pointer-events-none absolute left-0 top-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/top-left-corner.png"
+          src="/decoration/top-left-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -277,7 +310,7 @@ export function FAQ() {
       <div className="pointer-events-none absolute right-0 top-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/top-right-corner.png"
+          src="/decoration/top-right-decos.png"
           alt=""
           className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
         />
@@ -285,7 +318,7 @@ export function FAQ() {
       <div className="pointer-events-none absolute bottom-0 left-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/botto-left-corner.png"
+          src="/decoration/bottom-left-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -293,7 +326,7 @@ export function FAQ() {
       <div className="pointer-events-none absolute bottom-0 right-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/botto-right-corner.png"
+          src="/decoration/bottom-right-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -304,7 +337,7 @@ export function FAQ() {
         <div className="mx-auto mb-5 sm:mb-6 md:mb-7">
           <OrnamentalDivider />
         </div>
-        <div className="mx-auto mt-2 sm:mt-3 md:mt-4">
+        <div className="mx-auto">
           <FaqTitle />
         </div>
         <p

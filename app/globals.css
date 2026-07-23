@@ -138,32 +138,50 @@
   --font-serif: "Great Vibes", "Great Vibes Fallback";
   
   /* ─── Motif palette — edit here, affects every component ─── */
-  /* Background */
-  --color-motif-cream:   #FFF8F5; /* text couple and the background section */
-  
-  /* Primary Highlight */
-  --color-motif-yellow:  #EFCFBA; /* nothing changes see */
-  /* FA9A84 */
-  /* Secondary */
-  --color-motif-soft:    #F5E6DA; /* nothing changes see*/
-  --color-motif-accent:  #FA9A84; /* nothing changes see */
-  
-  /* Primary Brand */
-  --color-motif-deep:    #9A5C49; /* Navbar background. */
-  --color-motif-medium:  #E7C9B5; /* just a line below the navbar border  */
-  
-  /* Neutral */
-  --color-motif-silver:  #FCFAF8; /* nothing changes see  */
-  
-  /* Welcome section */
-  --color-welcome-bg:        color-mix(in srgb, var(--color-motif-cream) 38%, white); /* background color */
-  --color-welcome-bg-soft:   color-mix(in srgb, var(--color-motif-cream) 22%, white); /* background color */
-  --color-welcome-text:      #55443E; /* color to change paragraph text  */
-  --color-welcome-text-soft: #8A756D;  /* nothing changes see */
-  --color-welcome-heading:   #9A5C49; /* color to change heading text but the smaller one. */
-  --color-welcome-script:    #C8826A; /* nothing changes see */
-  --color-welcome-navy:      #7C4536; /* color to change BIG HEADER  */
-  --color-welcome-green:     #FA9A84; /* avatar, button and below header */
+/* ==========================================
+   MOTIF COLORS
+   Theme: Minimal Ivory + Champagne Gold + Wine Red
+========================================== */
+
+/* Background */
+--color-motif-cream:   #FDF9EE; /* Main page background */
+
+/* Primary Highlight */
+--color-motif-yellow:  #E9DABD; /* Gold accents */
+
+/* Secondary */
+--color-motif-soft:    #F8F4EC; /* Soft ivory sections */
+--color-motif-accent:  #D3B988; /* Gold buttons, icons, borders */
+
+/* Primary Brand */
+--color-motif-deep:    #6B1726; /* Navbar, headings, footer */
+--color-motif-medium:  #E9DABD; /* Navbar bottom border */
+
+/* Neutral */
+--color-motif-silver:  #FCFBF8; /* Cards, alternate backgrounds */
+
+/* ==========================================
+   WELCOME SECTION
+========================================== */
+
+--color-welcome-bg:        color-mix(in srgb, var(--color-motif-cream) 45%, white);
+--color-welcome-bg-soft:   color-mix(in srgb, var(--color-motif-cream) 25%, white);
+
+/* Paragraphs */
+--color-welcome-text:      #4D3B35;
+--color-welcome-text-soft: #8A8177;
+
+/* Small Headings */
+--color-welcome-heading:   #6B1726;
+
+/* Script Font */
+--color-welcome-script:    #D3B988;
+
+/* Main Hero Heading */
+--color-welcome-navy:      #6B1726;
+
+/* Buttons / Decorative Lines / Icons */
+--color-welcome-green:     #D3B988;
   /* ─────────────────────────────────────────────────────────── */
   --font-imperial-script: "Imperial Script", cursive;
   --font-beautiful-malera: "Beautiful Malera", cursive;

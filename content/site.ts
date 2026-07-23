@@ -6,9 +6,9 @@ import {
 export const siteConfig = {
   couple: {
     bride: "May Manalo", //Noenyl Bryle M. Gonzaga
-    brideNickname: "May", //Ltryl
+    brideNickname: "NIÑA", //Ltryl
     groom: "Toto Irinco", //Ltryl B. Benitez
-    groomNickname: "Toto",
+    groomNickname: "CARL",
     monogram:"/monogram/monogram.png" ,//Ltryl
     backgroundMusic:"/background_music/Keenan Te - Rest of My Life (Wedding Version).mp3"
   },
@@ -25,9 +25,9 @@ export const siteConfig = {
     googleShare: "https://docs.google.com/spreadsheets/d/1PxlVp4NBRGyAv68p_YZ0dd-s23tjfzW5Vhv403EZvDU/edit?usp=sharing", 
   },
   wedding: {
-    date: "August 31,2026",
-    time: "4:00 PM",
-    venue: "Don Jose Heights Atrium and Clubhouse",
+    date: "January 14, 2027",
+    time: "1:00 PM",
+    venue: "Santuario de San Antonio Parish",
     tagline: "are getting married!!!!!",
     theme: "Our wedding palette is inspired by timeless elegance and warmth.Motif Colors: Champagne Gold, Soft Beige, Warm Soft Brown",
     motif: "#BBCED5, #B9C3A8, #F3D8C5, #D1C4D4, #ECD8BA, #F4E8D8, #E1DCCF",
@@ -40,9 +40,9 @@ export const siteConfig = {
   },
   details: {
     rsvp: {
-      deadline: "August 20, 2026",
-      coordinator: "Micah Estanislao",
-      phone: "0935 861 6096	",
+      deadline: "November 27, 2026",
+      coordinator: "Imbitado Events",
+      phone: "​+63 926 058 5954",
     },
   },
   contact: {
@@ -52,57 +52,67 @@ export const siteConfig = {
   },
   giftRegistry: {
     QR_1:{
-    id: "Gcash",
-    src: "/QR/Gcash.png",
-    label: "Gcash",
-    accountNumber: "M** M : 0945****039",
+    id: "BDO",
+    src: "/QR/BPI.JPG",
+    label: "BDO",
+    accountNumber: "CN : ******3793",
     },
-    // QR_2:{
-    // id: "GOtyme Bank",
-    // src: "/QR/GOtyme.png",
-    // label: "GOtyme Bank",
-    // accountNumber: "John Wendel Talagtag",
-    // }
+    QR_2:{
+    id: "Venmo",
+    src: "/QR/venmo.JPG",
+    label: "Venmo",
+    accountNumber: "@CdotRey",
+    }
   },
   ceremony: {
-    location: "Don Jose Heights Atrium Hall ",
-    venue: "Doña Carmen Ave. Don Jose Heights Subd. Brgy. Commonwealth, Quezon City, Philippines",
-    map: "https://maps.app.goo.gl/6Uo3aPZHLPf4DmNAA",
-    date: "August 31, 2026",
-    day: "Saturday",
-    time: "4:00 PM",
-    entourageTime: "3:00 PM",
-    guestsTime: "3:30 PM",
-    image: ["/Details/ceremony.webp", "/Details/ceremony2.webp", "/Details/ceremony3.webp"],
+    location: "Santuario de San Antonio Parish",
+    venue: "Forbes Park, 3117 McKinley Rd, Forbes Park, Makati City",
+    map: "https://share.google/Fajs4jN4nePUfvelV",
+    date: "January 14, 2027",
+    day: "Thursday",
+    time: "1:00 PM",
+    entourageTime: "11:30 AM",
+    guestsTime: "12:00 PM",
+    image: ["/Details/ceremony.webp", "/Details/ceremony2.webp"],
   },
   reception: {
-    location: "Don Jose Heights Clubhouse",
-    venue: "Doña Carmen Ave. Don Jose Heights Subd. Brgy. Commonwealth, Quezon City, Philippines",
-    map: "https://maps.app.goo.gl/rmudeAwUsF5hmCq78",
-    date: "December 12, 2026",
-    day: "Saturday",
+    location: "Shangri La The Fort, Fourth floor, Bonifacio Hall",
+    venue: "30th Street, corner Fifth Ave, Taguig, Metro Manila",
+    map: "https://share.google/t2gPfVkOvjJcElEZl",
+    date: "January 14, 2027",
+    day: "Thursday",
     time: "6:00 PM",
-    image: ["/Details/reception1.webp", "/Details/reception2.webp","/Details/reception3.webp"],
+    image: ["/Details/reception.webp", "/Details/reception2.webp"],
   },
   dressCode: {
-      theme: "STRICTLY FORMAL",
-    colors: "#C3878C, #ECB4BC, #EBA7B3, #E8B3A7",
-    sponsors: {
-      photo: "/Details/sponsors-new.png",
-      male: "Barong and Black Pants",
-      female: "Dusty Blue Long Gown",
-    },
-    entourage: {
-      photo: "/Details/sponsors.png",
-      male: "Barong and Black Pants",
-      female: "Dusty Blue Long Gown",
-    },
+    theme: "STRICTLY FORMAL",
     guests: {
-      photo: "/Details/new-guest.png",
-      male: "Black Suit without Tie",
-      female: "Champagne Gold, Chocolate Brown, Beige and Sage Green Long Dress",
+      title: "Strictly Formal",
+      gentlemen: {
+        description: "Suit and tie in black or deep jewel tones.",
+        image: "/Details/Guest gentlemen.webp",
+      },
+      ladies: {
+        description:
+          "A structured evening gown or full-length formal dress in deep jewel tones.",
+        image: "/Details/Guest ladies.webp",
+      },
     },
-    note: "We kindly request our guests to dress in attire following our wedding palette."
+    sponsors: {
+      title: "For Our Primary Sponsors",
+      ladies: {
+        description: "Plum evening gown.",
+      },
+      gentlemen: {
+        description: "Black suit with a plum tie.",
+      },
+      image: "/Details/Primary sponsors.webp",
+    },
+    paletteNote:
+      "To create a cohesive and elegant celebration, we kindly encourage our guests to follow the suggested color palette. To allow our wedding party to be easily distinguished, we respectfully ask that guests refrain from wearing white, ivory, champagne, and shades of red, as these colors have been reserved for the bride and members of our entourage.",
+    closing:
+      "Thank you for helping us bring our wedding vision to life. We can't wait to celebrate with you!",
+    note: "We kindly request our guests to dress in attire following our wedding palette.",
   },
   narratives: {
     ourStory: `Once upon a signature…
@@ -134,17 +144,17 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   playlist: {
     title: "A Playlist from our hearts",
     subtitle: "Songs that have been part of our journey together",
-    playlistName: "Toto & May Wedding",
+    playlistName: "Carlo and Niña Wedding",
     embedUrl:
-    //https://open.spotify.com/embed/playlist/3is6hNTXdtAZpGSfeGyxx8?utm_source=generator&si=109a03ec62b5459a
-      "https://open.spotify.com/embed/playlist/3is6hNTXdtAZpGSfeGyxx8?utm_source=generator&theme=0&si=109a03ec62b5459a",
-    spotifyUrl: "https://open.spotify.com/playlist/3is6hNTXdtAZpGSfeGyxx8",
+    //https://open.spotify.com/embed/playlist/0mdM2N4wX14crL3RWfMV8J?utm_source=generator&si=8f1f66d60dae4117
+      "https://open.spotify.com/embed/playlist/0mdM2N4wX14crL3RWfMV8J?utm_source=generator&theme=0&si=8f1f66d60dae4117",
+    spotifyUrl: "https://open.spotify.com/playlist/0mdM2N4wX14crL3RWfMV8J",
   },
   snapShare: {
     googleDriveLink:
       "https://drive.google.com/drive/folders/1oLDrdvd7nZtkk8Gz_xMgXC9KTplOV5Z-?usp=sharing",
     albumQR: "/QR/AlbumQR.png",
-    hashtag: ["#TOTOallyMAYdForEachOther",],
+    hashtag: ["#CarloandNiñaWedding"],
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
   accommodation: {

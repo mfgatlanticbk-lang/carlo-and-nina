@@ -333,7 +333,7 @@ export function SnapShare() {
             <div className="grid w-full min-w-0 grid-cols-2 gap-2 sm:gap-3">
               <div className="relative aspect-square overflow-hidden rounded-xl border border-motif-deep/15 shadow-sm">
                 <Image
-                  src="/gallery-design/box (1).jpg"
+                  src="/mobile-background/couples (3).webp"
                   alt="Wedding moment 1"
                   fill
                   className="object-cover"
@@ -342,7 +342,7 @@ export function SnapShare() {
               </div>
               <div className="relative aspect-square overflow-hidden rounded-xl border border-motif-deep/15 shadow-sm">
                 <Image
-                  src="/gallery-design/box (2).jpg"
+                  src="/mobile-background/couples (43).webp"
                   alt="Wedding moment 2"
                   fill
                   className="object-cover"
@@ -351,7 +351,7 @@ export function SnapShare() {
               </div>
               <div className="relative col-span-2 aspect-[3/2] overflow-hidden rounded-xl border border-motif-deep/15 shadow-sm">
                 <Image
-                  src="/desktop-background/couples (22).webp"
+                  src="/desktop-background/couples (15).webp"
                   alt="Wedding moment 3"
                   fill
                   className="object-cover"
@@ -367,7 +367,7 @@ export function SnapShare() {
           </ContentCard>
 
           <div className="w-full min-w-0 space-y-5 sm:space-y-6 lg:order-2">
-            {/* <ContentCard>
+           <ContentCard>
               <h4
                 className={`${cinzel.className} ${ct.cardTitle} text-center font-semibold uppercase tracking-[0.08em]`}
                 style={{ color: palette.heading }}
@@ -405,9 +405,9 @@ export function SnapShare() {
               >
                 Scan with any camera app to open the full invitation and schedule.
               </p>
-            </ContentCard> */}
+            </ContentCard> 
 
-            {/* <ContentCard>
+            <ContentCard>
               <h5
                 className={`${cinzel.className} ${ct.body} text-center font-semibold uppercase tracking-[0.1em]`}
                 style={{ color: palette.heading }}
@@ -467,9 +467,9 @@ export function SnapShare() {
                   {copiedAllHashtags ? "All Copied!" : "Copy All"}
                 </span>
               </button>
-            </ContentCard> */}
+            </ContentCard> 
 
-            {/* <ContentCard>
+            <ContentCard>
               <h5
                 className={`${cinzel.className} ${ct.cardTitle} text-center font-semibold uppercase tracking-[0.08em]`}
                 style={{ color: palette.heading }}
@@ -508,7 +508,7 @@ export function SnapShare() {
                   </button>
                 ))}
               </div>
-            </ContentCard> */}
+            </ContentCard> 
 
             {uploadLink && (
               <ContentCard>

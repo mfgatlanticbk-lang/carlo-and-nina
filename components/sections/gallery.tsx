@@ -37,7 +37,7 @@ function GalleryCoupleLabel({ groom, bride }: { groom: string; bride: string }) 
   }
 
   return (
-    <div className="flex items-center justify-center gap-2.5 sm:gap-3.5">
+    <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 mt-8 sm:mt-10 md:mt-12">
       <span className="h-px w-5 sm:w-7 md:w-9" style={lineStyle} aria-hidden />
       <p
         className={`${cinzel.className} ${sectionType.label} shrink-0 py-0.5 font-semibold uppercase leading-normal tracking-[0.34em] min-[400px]:tracking-[0.38em] sm:tracking-[0.44em]`}
@@ -94,7 +94,7 @@ function GalleryTitle() {
         aria-hidden
         className={`${aboveTheBeyond.className} relative z-10 mx-auto block w-fit max-w-full px-1 leading-[0.88] sm:leading-[0.9]`}
         style={{
-          marginTop: "var(--script-overlap)",
+          marginTop: "calc(var(--script-overlap) + clamp(0.5rem, 2vw, 1rem))",
           fontSize: "var(--script-size)",
           color: "var(--color-welcome-green)",
           textShadow:
@@ -109,15 +109,16 @@ function GalleryTitle() {
 }
 
 const galleryItems = [
-  { image: "/mobile-background/couples (11).webp", text: " " },
-  { image: "/mobile-background/couples (4).webp", text: " " },
-  { image: "/mobile-background/couples (5).webp", text: " " },
-  { image: "/mobile-background/couples (6).webp", text: " " },
-  { image: "/mobile-background/couples (8).webp", text: " " },
   { image: "/mobile-background/couples (1).webp", text: " " },
-  { image: "/mobile-background/couples (10).webp", text: " " },
-  { image: "/mobile-background/couples (9).webp", text: " " },
-  { image: "/mobile-background/couples( (14).png", text: " " },
+  { image: "/mobile-background/couples (46).webp", text: " " },
+  { image: "/mobile-background/couples (2).webp", text: " " },
+  { image: "/mobile-background/couples (3).webp", text: " " },
+  { image: "/mobile-background/couples (4).webp", text: " " },
+  { image: "/mobile-background/couples (42).webp", text: " " },
+  { image: "/mobile-background/couples (43).webp", text: " " },
+  { image: "/mobile-background/couples (40).webp", text: " " },
+  { image: "/mobile-background/couples (41).webp", text: " " },
+  { image: "/mobile-background/couples (38).webp", text: " " },
 
 ]
 
@@ -212,7 +213,7 @@ export function Gallery() {
       <div className="pointer-events-none absolute left-0 top-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/top-left-corner.png"
+          src="/decoration/top-left-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -220,7 +221,7 @@ export function Gallery() {
       <div className="pointer-events-none absolute right-0 top-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/top-right-corner.png"
+          src="/decoration/top-right-decos.png"
           alt=""
           className="block h-auto w-auto max-w-[220px] sm:max-w-[160px] md:max-w-[220px] lg:max-w-[260px]"
         />
@@ -228,7 +229,7 @@ export function Gallery() {
       <div className="pointer-events-none absolute bottom-0 left-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/botto-left-corner.png"
+          src="/decoration/bottom-left-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -236,7 +237,7 @@ export function Gallery() {
       <div className="pointer-events-none absolute bottom-0 right-0 z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/decoration/decorations/botto-right-corner.png"
+          src="/decoration/bottom-right-decos.png"
           alt=""
           className={CORNER_DECO_CLASS}
         />
@@ -245,7 +246,7 @@ export function Gallery() {
       {/* Header */}
       <div className="relative z-20 mx-auto mb-6 max-w-5xl px-6 text-center @container/gallery sm:mb-8 sm:px-10 md:mb-10 md:px-12">
         <GalleryCoupleLabel groom={groomName} bride={brideName} />
-        <div className="my-4 sm:my-5 md:my-6">
+        <div className="mt-6 mb-4 sm:mt-8 sm:mb-5 md:mt-10 md:mb-6">
           <GalleryTitle />
         </div>
         <p
